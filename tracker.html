@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ha">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ciki da Raino - Kalkuletar Bibiyar Ciki</title>
+    <title>Ciki da Raino - Kalkuleta Ranar Haihuwa</title>
     <!-- AOS CSS -->
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <!-- Font Awesome -->
@@ -39,24 +39,22 @@
     </div>
     <div class="mobile-menu">
         
-        
-        
-  <!-- Bottom Navigation Inside Mobile Menu - 3 columns -->
+        <!-- Bottom Navigation Inside Mobile Menu - 3 columns -->
 <div class="bottom-nav">
     <!-- Home -->
     <a href="index.html" class="nav-item">
         <i class="fas fa-home" aria-hidden="true"></i>
-        <span>Shafin Gida (Home)</span>
+        <span>Shafin Gida</span>
     </a>
 
     <!-- Fertility Tools -->
     <a href="ovulation.html" class="nav-item">
         <i class="fas fa-venus-mars" aria-hidden="true"></i>
-        <span>Kalkuletar Ovulation</span>
+        <span>Kalkuleta Ovulation</span>
     </a>
     <a href="tracker.html" class="nav-item">
         <i class="fas fa-baby-carriage" aria-hidden="true"></i>
-        <span>Kalkuletar Bibiyar Ciki</span>
+        <span>Kalkuleta Ranar Haihuwa</span>
     </a>
 
     <!-- Pregnancy Info -->
@@ -66,13 +64,13 @@
     </a>
     <a href="pregnancy.html" class="nav-item">
         <i class="fas fa-baby" aria-hidden="true"></i>
-        <span>Goyon Ciki (Pregnancy)</span>
+        <span>Goyon Ciki</span>
     </a>
 
     <!-- Parenting -->
     <a href="parenting.html" class="nav-item">
         <i class="fas fa-child" aria-hidden="true"></i>
-        <span>Kula da Yara (Parenting)</span>
+        <span>Kula da Yara</span>
     </a>
 
     <!-- Nearby Hospitals -->
@@ -81,19 +79,19 @@
         <span>Nemo Asibitoci Mafi Kusa</span>
     </a>
 
-    <!-- New: Nutrition Tips -->
+    <!-- Nutrition Tips -->
     <a href="nutrition.html" class="nav-item">
         <i class="fas fa-apple-alt" aria-hidden="true"></i>
         <span>Abinci mai Gina Jiki</span>
     </a>
 
-    <!-- New: FAQs -->
+    <!-- FAQs -->
     <a href="faq.html" class="nav-item">
         <i class="fas fa-question-circle" aria-hidden="true"></i>
         <span>Tambayoyi da Amsoshi</span>
     </a>
 
-    <!-- New: Blog/Articles -->
+    <!-- Blog/Articles -->
     <a href="blog.html" class="nav-item">
         <i class="fas fa-newspaper" aria-hidden="true"></i>
         <span>Labarai da Shawarwari</span>
@@ -102,11 +100,11 @@
     <!-- About & Contact -->
     <a href="about.html" class="nav-item">
         <i class="fas fa-info-circle" aria-hidden="true"></i>
-        <span>Game Da Mu (About Us)</span>
+        <span>Game Da Mu</span>
     </a>
     <a href="contact.html" class="nav-item">
         <i class="fas fa-hands-helping" aria-hidden="true"></i>
-        <span>Tuntube Mu (Contact Us)</span>
+        <span>Tuntube Mu</span>
     </a>
 </div>
     </div>
@@ -115,456 +113,456 @@
     <!-- Dashboard -->
     <section class="dashboard" id="dashboard">
         <div class="calculator-card" data-aos="fade-up">
-            <h2><i class="fas fa-baby-carriage"></i> Due Date Calculator</h2>
+            <h2><i class="fas fa-baby-carriage"></i> Kalkuleta Ranar Haihuwa</h2>
             <div class="input-group">
-                <label for="calculation-method">Calculate based on:</label>
+                <label for="calculation-method">Yi lissafin bisa:</label>
                 <select id="calculation-method">
-                    <option value="lmp">Last Menstrual Period (LMP)</option>
-                    <option value="ed">Estimated Due Date</option>
+                    <option value="lmp">Ranar Ƙarshe na Haihuwa (LMP)</option>
+                    <option value="ed">Kiyasin Ranar Haihuwa</option>
                 </select>
             </div>
             
             <div class="input-group" id="lmp-input">
-                <label for="last-period">First day of last period:</label>
+                <label for="last-period">Ranar farko na haila ta ƙarshe:</label>
                 <input type="date" id="last-period">
             </div>
             
             <div class="input-group" id="ed-input" style="display: none;">
-                <label for="due-date">Estimated due date:</label>
+                <label for="due-date">Kiyasin ranar haihuwa:</label>
                 <input type="date" id="due-date">
             </div>
             
             <div class="button-group">
                 <button class="btn btn-primary" id="calculate-btn">
-                    <i class="fas fa-calculator"></i> Calculate
+                    <i class="fas fa-calculator"></i> Yi Lissafi
                 </button>
                 <button class="btn btn-secondary" id="reset-btn">
-                    <i class="fas fa-redo"></i> Reset
+                    <i class="fas fa-redo"></i> Sake Fara
                 </button>
             </div>
         </div>
         
         <div class="pregnancy-info" id="pregnancy-info" style="display: none;" data-aos="fade-up">
-            <h2 id="week-title">Week 12: Baby is the size of a plum</h2>
-            <p id="due-date-info">Due: January 5, 2025 (84 days left)</p>
+            <h2 id="week-title">Mako na 12: Jariri girman plum ne</h2>
+            <p id="due-date-info">Ranar Haihuwa: 5 Janairu, 2025 (kwanaki 84 da suka rage)</p>
             
             <div class="progress-container">
-                <h3>Pregnancy Progress</h3>
+                <h3>Ci gaban Ciki</h3>
                 <div class="trimester-progress">
-                    <div class="trimester trimester-1 active-trimester">1st</div>
-                    <div class="trimester trimester-2">2nd</div>
-                    <div class="trimester trimester-3">3rd</div>
+                    <div class="trimester trimester-1 active-trimester">Na 1</div>
+                    <div class="trimester trimester-2">Na 2</div>
+                    <div class="trimester trimester-3">Na 3</div>
                 </div>
-                <p id="trimester-info">You're in your first trimester (weeks 1-12)</p>
+                <p id="trimester-info">Kuna cikin trimester na farko (makonni 1-12)</p>
             </div>
         </div>
     </section>
     
     <!-- Fetal Development Timeline -->
-    <h2 class="section-title" id="timeline"><i class="fas fa-baby"></i> Fetal Development Timeline</h2>
+    <h2 class="section-title" id="timeline"><i class="fas fa-baby"></i> Jerin Ci gaban Jariri</h2>
     <div class="timeline">
         <div class="week-card" data-aos="fade-up">
             <div class="week-header" onclick="toggleWeek(this)">
-                <h3>Week 4: Poppy Seed</h3>
+                <h3>Mako na 4: Irin Poppy</h3>
                 <i class="fas fa-chevron-down"></i>
             </div>
             <div class="week-content">
                 <div class="week-details">
                     <div class="baby-size">
-                        <img src="https://www.babycenter.com/ims/2022/02/4-weeks-pregnant_wide.jpg" alt="Week 4 fetus" class="fetus-image">
-                        <p>Embryo is about 0.078 inches (2 mm) long</p>
-                        <p>Weight: Less than 0.04 oz (1 gram)</p>
+                        <img src="https://www.babycenter.com/ims/2022/02/4-weeks-pregnant_wide.jpg" alt="Jariri na mako na 4" class="fetus-image">
+                        <p>Girman jariri: kusan inci 0.078 (mm 2) tsayi</p>
+                        <p>Nauyi: ƙasa da oz 0.04 (gram 1)</p>
                     </div>
                     <div class="milestones">
-                        <h4>Key Developments:</h4>
+                        <h4>Muhimman Ci gaba:</h4>
                         <ul>
-                            <li>Blastocyst implants in uterine wall</li>
-                            <li>Placenta begins to form</li>
-                            <li>Amniotic sac develops</li>
-                            <li>Primitive circulatory system starts</li>
+                            <li>Blastocyst ya shiga cikin bangon mahaifa</li>
+                            <li>Placenta ya fara samuwa</li>
+                            <li>Amniotic sac yana ci gaba</li>
+                            <li>Tsarin jini na farko ya fara aiki</li>
                         </ul>
                     </div>
                 </div>
                 <div class="quick-tip">
-                    <h4><i class="fas fa-lightbulb"></i> Health Tip</h4>
-                    <p>Start taking prenatal vitamins with folic acid to prevent neural tube defects.</p>
+                    <h4><i class="fas fa-lightbulb"></i> Shawara ta Lafiya</h4>
+                    <p>Fara shan kayan abinci masu gina jiki tare da folic acid don hana lahani ga jijiyoyin jiki.</p>
                 </div>
             </div>
         </div>
         
         <div class="week-card" data-aos="fade-up">
             <div class="week-header" onclick="toggleWeek(this)">
-                <h3>Week 8: Raspberry</h3>
+                <h3>Mako na 8: Rasberi</h3>
                 <i class="fas fa-chevron-down"></i>
             </div>
             <div class="week-content">
                 <div class="week-details">
                     <div class="baby-size">
-                        <img src="https://www.babycenter.com/ims/2022/02/8-weeks-pregnant_wide.jpg" alt="Week 8 fetus" class="fetus-image">
-                        <p>Baby is about 0.63 inches (16 mm) long</p>
-                        <p>Weight: 0.04 oz (1 gram)</p>
+                        <img src="https://www.babycenter.com/ims/2022/02/8-weeks-pregnant_wide.jpg" alt="Jariri na mako na 8" class="fetus-image">
+                        <p>Girman jariri: kusan inci 0.63 (mm 16) tsayi</p>
+                        <p>Nauyi: oz 0.04 (gram 1)</p>
                     </div>
                     <div class="milestones">
-                        <h4>Key Developments:</h4>
+                        <h4>Muhimman Ci gaba:</h4>
                         <ul>
-                            <li>Fingers and toes begin forming</li>
-                            <li>Eyelids and ears developing</li>
-                            <li>Heartbeat can be detected</li>
-                            <li>All major organs have begun to form</li>
+                            <li>Yatsun hannu da ƙafafu sun fara samuwa</li>
+                            <li>Idanu da kunnuwa suna ci gaba</li>
+                            <li>Za a iya gano bugun zuciya</li>
+                            <li>Dukkan manyan gabobin jiki sun fara samuwa</li>
                         </ul>
                     </div>
                 </div>
                 <div class="quick-tip">
-                    <h4><i class="fas fa-lightbulb"></i> Health Tip</h4>
-                    <p>Stay hydrated and eat small, frequent meals to combat morning sickness.</p>
+                    <h4><i class="fas fa-lightbulb"></i> Shawara ta Lafiya</h4>
+                    <p>Ku ci abinci kaɗan kaɗan sau da yawa don magance tashin zuciya na safe.</p>
                 </div>
             </div>
         </div>
         
         <div class="week-card" data-aos="fade-up">
             <div class="week-header" onclick="toggleWeek(this)">
-                <h3>Week 12: Plum</h3>
+                <h3>Mako na 12: Plum</h3>
                 <i class="fas fa-chevron-down"></i>
             </div>
             <div class="week-content">
                 <div class="week-details">
                     <div class="baby-size">
-                        <img src="https://www.babycenter.com/ims/2022/02/12-weeks-pregnant_wide.jpg" alt="Week 12 fetus" class="fetus-image">
-                        <p>Baby is about 2.1 inches (5.4 cm) long</p>
-                        <p>Weight: 0.5 oz (14 grams)</p>
+                        <img src="https://www.babycenter.com/ims/2022/02/12-weeks-pregnant_wide.jpg" alt="Jariri na mako na 12" class="fetus-image">
+                        <p>Girman jariri: kusan inci 2.1 (cm 5.4) tsayi</p>
+                        <p>Nauyi: oz 0.5 (gram 14)</p>
                     </div>
                     <div class="milestones">
-                        <h4>Key Developments:</h4>
+                        <h4>Muhimman Ci gaba:</h4>
                         <ul>
-                            <li>Reflexes begin developing</li>
-                            <li>Fingers and toes fully separated</li>
-                            <li>Eyelids formed but remain closed</li>
-                            <li>Kidneys begin producing urine</li>
+                            <li>Hankali yana fara ci gaba</li>
+                            <li>Yatsun hannu da ƙafafu sun rabu sosai</li>
+                            <li>Idanu sun samu amma suna rufe</li>
+                            <li>Ƙoda sun fara samar da fitsari</li>
                         </ul>
                     </div>
                 </div>
                 <div class="quick-tip">
-                    <h4><i class="fas fa-lightbulb"></i> Health Tip</h4>
-                    <p>Increase your intake of omega-3 fatty acids (found in salmon, walnuts, and flaxseeds) to support baby's brain development.</p>
+                    <h4><i class="fas fa-lightbulb"></i> Shawara ta Lafiya</h4>
+                    <p>Ƙara yawan abinci mai gina jiki kamar omega-3 fatty acids (ana samun su a cikin kifi, gyada, da flaxseeds) don tallafawa ci gaban kwakwalwar jariri.</p>
                 </div>
             </div>
         </div>
         
         <div class="week-card" data-aos="fade-up">
             <div class="week-header" onclick="toggleWeek(this)">
-                <h3>Week 16: Avocado</h3>
+                <h3>Mako na 16: Avocado</h3>
                 <i class="fas fa-chevron-down"></i>
             </div>
             <div class="week-content">
                 <div class="week-details">
                     <div class="baby-size">
-                        <img src="https://www.babycenter.com/ims/2022/02/16-weeks-pregnant_wide.jpg" alt="Week 16 fetus" class="fetus-image">
-                        <p>Baby is about 4.6 inches (11.6 cm) long</p>
-                        <p>Weight: 3.5 oz (100 grams)</p>
+                        <img src="https://www.babycenter.com/ims/2022/02/16-weeks-pregnant_wide.jpg" alt="Jariri na mako na 16" class="fetus-image">
+                        <p>Girman jariri: kusan inci 4.6 (cm 11.6) tsayi</p>
+                        <p>Nauyi: oz 3.5 (gram 100)</p>
                     </div>
                     <div class="milestones">
-                        <h4>Key Developments:</h4>
+                        <h4>Muhimman Ci gaba:</h4>
                         <ul>
-                            <li>Pattern of scalp hair beginning</li>
-                            <li>Ears nearly in final position</li>
-                            <li>Muscles getting stronger</li>
-                            <li>Possible first flutters of movement</li>
+                            <li>Gashin kai yana fara samuwa</li>
+                            <li>Kunnuwa kusan sun isa wurinsu na ƙarshe</li>
+                            <li>Tsokoki suna ƙara ƙarfi</li>
+                            <li>Za a iya fara jin motsi</li>
                         </ul>
                     </div>
                 </div>
                 <div class="quick-tip">
-                    <h4><i class="fas fa-lightbulb"></i> Health Tip</h4>
-                    <p>Start doing pelvic floor exercises (Kegels) to prepare for childbirth and prevent incontinence.</p>
+                    <h4><i class="fas fa-lightbulb"></i> Shawara ta Lafiya</h4>
+                    <p>Fara yin motsa jiki na ƙashin ƙugu (Kegels) don shirya haihuwa da hana rashin kula da fitsari.</p>
                 </div>
             </div>
         </div>
         
         <div class="week-card" data-aos="fade-up">
             <div class="week-header" onclick="toggleWeek(this)">
-                <h3>Week 20: Banana</h3>
+                <h3>Mako na 20: Ayaba</h3>
                 <i class="fas fa-chevron-down"></i>
             </div>
             <div class="week-content">
                 <div class="week-details">
                     <div class="baby-size">
-                        <img src="https://www.babycenter.com/ims/2022/02/20-weeks-pregnant_wide.jpg" alt="Week 20 fetus" class="fetus-image">
-                        <p>Baby is about 6.5 inches (16.4 cm) long</p>
-                        <p>Weight: 10.6 oz (300 grams)</p>
+                        <img src="https://www.babycenter.com/ims/2022/02/20-weeks-pregnant_wide.jpg" alt="Jariri na mako na 20" class="fetus-image">
+                        <p>Girman jariri: kusan inci 6.5 (cm 16.4) tsayi</p>
+                        <p>Nauyi: oz 10.6 (gram 300)</p>
                     </div>
                     <div class="milestones">
-                        <h4>Key Developments:</h4>
+                        <h4>Muhimman Ci gaba:</h4>
                         <ul>
-                            <li>Vernix caseosa (protective coating) forms</li>
-                            <li>Regular sleep/wake cycles established</li>
-                            <li>Possible gender reveal at anatomy scan</li>
-                            <li>Stronger, more noticeable movements</li>
+                            <li>Vernix caseosa (kariya) yana samuwa</li>
+                            <li>Tsarin barci da farkawa yana aiki</li>
+                            <li>Za a iya gano jinsin jariri</li>
+                            <li>Motsi mai ƙarfi da za a iya gane shi</li>
                         </ul>
                     </div>
                 </div>
                 <div class="quick-tip">
-                    <h4><i class="fas fa-lightbulb"></i> Health Tip</h4>
-                    <p>Sleep on your side (preferably left) to improve circulation to your baby. Use pillows for support.</p>
+                    <h4><i class="fas fa-lightbulb"></i> Shawara ta Lafiya</h4>
+                    <p>Kwana a gefenku (gwargwadon yiwuwa hagu) don inganta jigilar jini zuwa ga jariri. Yi amfani da matashin kai don tallafi.</p>
                 </div>
             </div>
         </div>
         
         <div class="week-card" data-aos="fade-up">
             <div class="week-header" onclick="toggleWeek(this)">
-                <h3>Week 24: Corn</h3>
+                <h3>Mako na 24: Masara</h3>
                 <i class="fas fa-chevron-down"></i>
             </div>
             <div class="week-content">
                 <div class="week-details">
                     <div class="baby-size">
-                        <img src="https://www.babycenter.com/ims/2022/02/24-weeks-pregnant_wide.jpg" alt="Week 24 fetus" class="fetus-image">
-                        <p>Baby is about 8 inches (20 cm) long</p>
-                        <p>Weight: 1.3 lbs (600 grams)</p>
+                        <img src="https://www.babycenter.com/ims/2022/02/24-weeks-pregnant_wide.jpg" alt="Jariri na mako na 24" class="fetus-image">
+                        <p>Girman jariri: kusan inci 8 (cm 20) tsayi</p>
+                        <p>Nauyi: lb 1.3 (gram 600)</p>
                     </div>
                     <div class="milestones">
-                        <h4>Key Developments:</h4>
+                        <h4>Muhimman Ci gaba:</h4>
                         <ul>
-                            <li>Lungs developing rapidly</li>
-                            <li>Taste buds forming</li>
-                            <li>Brain growing quickly</li>
-                            <li>Skin becoming less transparent</li>
+                            <li>Huhu yana ci gaba da sauri</li>
+                            <li>Taste buds yana samuwa</li>
+                            <li>Kwakwalwa tana girma da sauri</li>
+                            <li>Fata tana zama ƙasa da canji</li>
                         </ul>
                     </div>
                 </div>
                 <div class="quick-tip">
-                    <h4><i class="fas fa-lightbulb"></i> Health Tip</h4>
-                    <p>Watch for signs of preterm labor like regular contractions, pelvic pressure, or fluid leakage.</p>
+                    <h4><i class="fas fa-lightbulb"></i> Shawara ta Lafiya</h4>
+                    <p>Ku lura da alamun haihuwa da wuri kamar ƙwanƙwasa na yau da kullun, matsa lamba a ƙashin ƙugu, ko zubar ruwa.</p>
                 </div>
             </div>
         </div>
         
         <div class="week-card" data-aos="fade-up">
             <div class="week-header" onclick="toggleWeek(this)">
-                <h3>Week 28: Eggplant</h3>
+                <h3>Mako na 28: Gauta</h3>
                 <i class="fas fa-chevron-down"></i>
             </div>
             <div class="week-content">
                 <div class="week-details">
                     <div class="baby-size">
-                        <img src="https://www.babycenter.com/ims/2022/02/28-weeks-pregnant_wide.jpg" alt="Week 28 fetus" class="fetus-image">
-                        <p>Baby is about 10 inches (25 cm) long</p>
-                        <p>Weight: 2.2 lbs (1 kg)</p>
+                        <img src="https://www.babycenter.com/ims/2022/02/28-weeks-pregnant_wide.jpg" alt="Jariri na mako na 28" class="fetus-image">
+                        <p>Girman jariri: kusan inci 10 (cm 25) tsayi</p>
+                        <p>Nauyi: lb 2.2 (kg 1)</p>
                     </div>
                     <div class="milestones">
-                        <h4>Key Developments:</h4>
+                        <h4>Muhimman Ci gaba:</h4>
                         <ul>
-                            <li>Eyes can open and close</li>
-                            <li>Brain developing billions of neurons</li>
-                            <li>Baby can dream during REM sleep</li>
-                            <li>Lungs capable of breathing air</li>
+                            <li>Idanu suna iya buɗewa da rufewa</li>
+                            <li>Kwakwalwa tana samar da biliyoyin neurons</li>
+                            <li>Jariri yana iya mafarki yayin barci</li>
+                            <li>Huhu yana iya numfashi</li>
                         </ul>
                     </div>
                 </div>
                 <div class="quick-tip">
-                    <h4><i class="fas fa-lightbulb"></i> Health Tip</h4>
-                    <p>Get your Tdap vaccine to protect your baby from whooping cough after birth.</p>
+                    <h4><i class="fas fa-lightbulb"></i> Shawara ta Lafiya</h4>
+                    <p>Yi allurar Tdap don kare jaririnku daga tari bayan haihuwa.</p>
                 </div>
             </div>
         </div>
         
         <div class="week-card" data-aos="fade-up">
             <div class="week-header" onclick="toggleWeek(this)">
-                <h3>Week 32: Jicama</h3>
+                <h3>Mako na 32: Jicama</h3>
                 <i class="fas fa-chevron-down"></i>
             </div>
             <div class="week-content">
                 <div class="week-details">
                     <div class="baby-size">
-                        <img src="https://www.babycenter.com/ims/2022/02/32-weeks-pregnant_wide.jpg" alt="Week 32 fetus" class="fetus-image">
-                        <p>Baby is about 11.4 inches (29 cm) long</p>
-                        <p>Weight: 3.75 lbs (1.7 kg)</p>
+                        <img src="https://www.babycenter.com/ims/2022/02/32-weeks-pregnant_wide.jpg" alt="Jariri na mako na 32" class="fetus-image">
+                        <p>Girman jariri: kusan inci 11.4 (cm 29) tsayi</p>
+                        <p>Nauyi: lb 3.75 (kg 1.7)</p>
                     </div>
                     <div class="milestones">
-                        <h4>Key Developments:</h4>
+                        <h4>Muhimman Ci gaba:</h4>
                         <ul>
-                            <li>Practicing breathing movements</li>
-                            <li>Bones fully formed but still soft</li>
-                            <li>Skin becoming less wrinkled</li>
-                            <li>Sleeping 90-95% of the day</li>
+                            <li>Yana atisayen motsin numfashi</li>
+                            <li>Ƙasusuwa sun cika amma har yanzu suna laushi</li>
+                            <li>Fata tana zama ƙasa da ƙuƙumi</li>
+                            <li>Barci kashi 90-95% na yini</li>
                         </ul>
                     </div>
                 </div>
                 <div class="quick-tip">
-                    <h4><i class="fas fa-lightbulb"></i> Health Tip</h4>
-                    <p>Monitor baby's movements daily. Report any decrease in activity to your healthcare provider.</p>
+                    <h4><i class="fas fa-lightbulb"></i> Shawara ta Lafiya</h4>
+                    <p>Ku lura da motsin jariri kowace rana. Ku ba da rahoton duk wani raguwar motsi ga likitan ku.</p>
                 </div>
             </div>
         </div>
         
         <div class="week-card" data-aos="fade-up">
             <div class="week-header" onclick="toggleWeek(this)">
-                <h3>Week 36: Romaine Lettuce</h3>
+                <h3>Mako na 36: Lettuce</h3>
                 <i class="fas fa-chevron-down"></i>
             </div>
             <div class="week-content">
                 <div class="week-details">
                     <div class="baby-size">
-                        <img src="https://www.babycenter.com/ims/2022/02/36-weeks-pregnant_wide.jpg" alt="Week 36 fetus" class="fetus-image">
-                        <p>Baby is about 12.5 inches (32 cm) long</p>
-                        <p>Weight: 5.75 lbs (2.6 kg)</p>
+                        <img src="https://www.babycenter.com/ims/2022/02/36-weeks-pregnant_wide.jpg" alt="Jariri na mako na 36" class="fetus-image">
+                        <p>Girman jariri: kusan inci 12.5 (cm 32) tsayi</p>
+                        <p>Nauyi: lb 5.75 (kg 2.6)</p>
                     </div>
                     <div class="milestones">
-                        <h4>Key Developments:</h4>
+                        <h4>Muhimman Ci gaba:</h4>
                         <ul>
-                            <li>Vernix covering begins to disappear</li>
-                            <li>Baby may settle into head-down position</li>
-                            <li>Lungs nearly fully developed</li>
-                            <li>Skin becoming pink and smooth</li>
+                            <li>Vernix yana fara ɓacewa</li>
+                            <li>Jariri na iya zaune a matsayin kai ƙasa</li>
+                            <li>Huhu sun kusan cika</li>
+                            <li>Fata tana zama mai ruwan hoda da santsi</li>
                         </ul>
                     </div>
                 </div>
                 <div class="quick-tip">
-                    <h4><i class="fas fa-lightbulb"></i> Health Tip</h4>
-                    <p>Pack your hospital bag and finalize your birth plan.</p>
+                    <h4><i class="fas fa-lightbulb"></i> Shawara ta Lafiya</h4>
+                    <p>Ku shirya jakar asibiti da kuma kammala shirin haihuwa.</p>
                 </div>
             </div>
         </div>
         
         <div class="week-card" data-aos="fade-up">
             <div class="week-header" onclick="toggleWeek(this)">
-                <h3>Week 40: Pumpkin</h3>
+                <h3>Mako na 40: Kabewa</h3>
                 <i class="fas fa-chevron-down"></i>
             </div>
             <div class="week-content">
                 <div class="week-details">
                     <div class="baby-size">
-                        <img src="https://www.babycenter.com/ims/2022/02/40-weeks-pregnant_wide.jpg" alt="Week 40 fetus" class="fetus-image">
-                        <p>Baby is about 14 inches (36 cm) long</p>
-                        <p>Weight: 7.5 lbs (3.4 kg)</p>
+                        <img src="https://www.babycenter.com/ims/2022/02/40-weeks-pregnant_wide.jpg" alt="Jariri na mako na 40" class="fetus-image">
+                        <p>Girman jariri: kusan inci 14 (cm 36) tsayi</p>
+                        <p>Nauyi: lb 7.5 (kg 3.4)</p>
                     </div>
                     <div class="milestones">
-                        <h4>Key Developments:</h4>
+                        <h4>Muhimman Ci gaba:</h4>
                         <ul>
-                            <li>Full-term development complete</li>
-                            <li>Lanugo (fine hair) mostly gone</li>
-                            <li>Nails may extend past fingertips</li>
-                            <li>Ready for life outside the womb</li>
+                            <li>Ci gaban cikakken lokaci ya cika</li>
+                            <li>Lanugo (gashi mai laushi) ya ƙare</li>
+                            <li>Farce na iya wuce yatsun hannu</li>
+                            <li>A shirye don rayuwa a wajen mahaifa</li>
                         </ul>
                     </div>
                 </div>
                 <div class="quick-tip">
-                    <h4><i class="fas fa-lightbulb"></i> Health Tip</h4>
-                    <p>Know the signs of labor: regular contractions, water breaking, or bloody show. Contact your provider when labor begins.</p>
+                    <h4><i class="fas fa-lightbulb"></i> Shawara ta Lafiya</h4>
+                    <p>Ku san alamun haihuwa: ƙwanƙwasa na yau da kullun, ruwan ciki ya fashe, ko zubar jini. Ku tuntuɓi mai kula da ku lokacin da haihuwa ta fara.</p>
                 </div>
             </div>
         </div>
     </div>
     
     <!-- Nutrition & Wellness -->
-    <h2 class="section-title" id="nutrition"><i class="fas fa-utensils"></i> Nutrition & Wellness</h2>
+    <h2 class="section-title" id="nutrition"><i class="fas fa-utensils"></i> Abinci mai Gina Jiki & Lafiya</h2>
     <div class="nutrition">
         <div class="food-guide">
             <div class="food-list" data-aos="fade-up">
-                <h3><i class="fas fa-check-circle safe"></i> Safe Foods</h3>
+                <h3><i class="fas fa-check-circle safe"></i> Abinci Mai Amfani</h3>
                 <div class="food-item">
                     <input type="checkbox" id="safe1">
-                    <label for="safe1">Lean meats (fully cooked)</label>
+                    <label for="safe1">Naman da aka dafa sosai</label>
                 </div>
                 <div class="food-item">
                     <input type="checkbox" id="safe2">
-                    <label for="safe2">Pasteurized dairy products</label>
+                    <label for="safe2">Kayayyakin kiwo masu pasteurized</label>
                 </div>
                 <div class="food-item">
                     <input type="checkbox" id="safe3">
-                    <label for="safe3">Leafy green vegetables</label>
+                    <label for="safe3">Kayan lambu masu ganye</label>
                 </div>
                 <div class="food-item">
                     <input type="checkbox" id="safe4">
-                    <label for="safe4">Whole grains</label>
+                    <label for="safe4">Dukan hatsi</label>
                 </div>
                 <div class="food-item">
                     <input type="checkbox" id="safe5">
-                    <label for="safe5">Cooked eggs</label>
+                    <label for="safe5">Ƙwai da aka dafa</label>
                 </div>
             </div>
             
             <div class="food-list" data-aos="fade-up" data-aos-delay="100">
-                <h3><i class="fas fa-times-circle unsafe"></i> Avoid These</h3>
+                <h3><i class="fas fa-times-circle unsafe"></i> Guji Waɗannan</h3>
                 <div class="food-item">
                     <input type="checkbox" id="unsafe1">
-                    <label for="unsafe1">Raw or undercooked seafood</label>
+                    <label for="unsafe1">Kifi ɗanye ko wanda bai dafa sosai ba</label>
                 </div>
                 <div class="food-item">
                     <input type="checkbox" id="unsafe2">
-                    <label for="unsafe2">Unpasteurized cheeses</label>
+                    <label for="unsafe2">Cuku masu pasteurized</label>
                 </div>
                 <div class="food-item">
                     <input type="checkbox" id="unsafe3">
-                    <label for="unsafe3">High-mercury fish (shark, swordfish)</label>
+                    <label for="unsafe3">Kifi mai yawan mercury (shark, swordfish)</label>
                 </div>
                 <div class="food-item">
                     <input type="checkbox" id="unsafe4">
-                    <label for="unsafe4">Excessive caffeine (>200mg/day)</label>
+                    <label for="unsafe4">Yawan shan maganin kafeyin (>200mg/rana)</label>
                 </div>
                 <div class="food-item">
                     <input type="checkbox" id="unsafe5">
-                    <label for="unsafe5">Raw sprouts</label>
+                    <label for="unsafe5">Sprouts ɗanye</label>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- DANGER -->
-    <h2 class="section-title" id="medical-info"><i class="fas fa-heartbeat"></i>  Medical Information</h2>
+    <h2 class="section-title" id="medical-info"><i class="fas fa-heartbeat"></i> Bayanin Likita</h2>
     <div class="nutrition">
         <div class="food-guide">
             <div class="food-list warning-signs" data-aos="fade-up">
-                <h3><i class="fas fa-exclamation-triangle"></i> Warning Signs</h3>
+                <h3><i class="fas fa-exclamation-triangle"></i> Alamun Gargadi</h3>
                 <div class="food-item">
                     <input type="checkbox" id="safe1">
-                    <label for="safe1">Severe abdominal pain</label>
+                    <label for="safe1">Ciwon ciki mai tsanani</label>
                 </div>
                 <div class="food-item">
                     <input type="checkbox" id="safe2">
-                    <label for="safe2">Decreased fetal movement</label>
+                    <label for="safe2">Ragewar motsin jariri</label>
                 </div>
                 <div class="food-item">
                     <input type="checkbox" id="safe3">
-                    <label for="safe3">Vaginal bleeding</label>
+                    <label for="safe3">Zubar jini daga farji</label>
                 </div>
                 <div class="food-item">
                     <input type="checkbox" id="safe4">
-                    <label for="safe4">Severe headaches with vision changes</label>
+                    <label for="safe4">Ciwon kai mai tsanani tare da canje-canjen gani</label>
                 </div>
                 <div class="food-item">
                     <input type="checkbox" id="safe5">
-                    <label for="safe5">Sudden swelling of face/hands</label>
+                    <label for="safe5">Kumburin fuska/hannaye kwatsam</label>
                 </div>
-               <p class="emergency">Seek immediate medical attention if you experience any of these symptoms.</p>
+               <p class="emergency">Nemi taimakon likita nan da nan idan kun ga ɗaya daga cikin waɗannan alamun.</p>
             </div> 
         </div>
 
         <div class="food-list" data-aos="fade-up" data-aos-delay="100">
-              <h3><i class="fas fa-calendar-check"></i> Prenatal Visit Schedule</h3>
+              <h3><i class="fas fa-calendar-check"></i> Jerin Ziyarar Kula da Ciki</h3>
                 <div class="food-item">
                     <input type="checkbox" id="unsafe1">
-                    <label for="unsafe1"><strong>Weeks 4-28:</strong> Every 4 weeks</label>
+                    <label for="unsafe1"><strong>Makonni 4-28:</strong> Kowace mako 4</label>
                 </div>
                 <div class="food-item">
                     <input type="checkbox" id="unsafe2">
-                    <label for="unsafe2"><strong>Weeks 28-36:</strong> Every 2 weeks</label>
+                    <label for="unsafe2"><strong>Makonni 28-36:</strong> Kowace mako 2</label>
                 </div>
                 <div class="food-item">
                     <input type="checkbox" id="unsafe3">
-                    <label for="unsafe3"><strong>Weeks 36-birth:</strong> Weekly</label>
+                    <label for="unsafe3"><strong>Makonni 36-haihuwa:</strong> Kowace mako</label>
                 </div>
       <br>
-         <h3><i class="fas fa-syringe "></i> Recommended Vaccines</h3>
+         <h3><i class="fas fa-syringe "></i> Alluran da aka Ba da Shawara</h3>
                 <div class="food-item">
                     <input type="checkbox" id="safe1">
-                    <label for="safe1">Flu vaccine (any trimester)</label>
+                    <label for="safe1">Allurar mura (kowace trimester)</label>
                 </div>
                 <div class="food-item">
                     <input type="checkbox" id="safe2">
-                    <label for="safe2">Tdap (between 27-36 weeks)</label>
+                    <label for="safe2">Tdap (tsakanin makonni 27-36)</label>
                 </div>
                 <div class="food-item">
                     <input type="checkbox" id="safe3">
-                    <label for="safe3">COVID-19 vaccine (as recommended)</label>
+                    <label for="safe3">Allurar COVID-19 (kamar yadda aka ba da shawara)</label>
                 </div>
         </div>
     </div>
@@ -574,75 +572,37 @@
          
   <!-- Education Section -->
     <section class="education-section" id="resources">
-        <h2 class="section-title"><i class="fas fa-book-open"></i> Mukaloli Masu Alaka</h2>
+        <h2 class="section-title"><i class="fas fa-book-open"></i> Albarkatun Ilmantarwa</h2>
         <div class="article-grid">
             <div class="article-card" data-aos="fade-up">
                 <div class="article-img" style="background-image: url('https://images.unsplash.com/photo-1498837167922-ddd27525d352?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
                 <div class="article-content">
-                    <h3>Understanding Your Cycle</h3>
-                    <p>Learn how to track your menstrual cycle and identify your most fertile days.</p>
-                    <a href="#" class="read-more">Read more <i class="fas fa-arrow-right"></i></a>
+                    <h3>Fahimtar Tsarin Haiku</h3>
+                    <p>Koyi yadda ake bin diddigin lokacin haiku da gano ranaku masu yawan haifuwa.</p>
+                    <a href="#" class="read-more">Kara karantawa <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
             
             <div class="article-card" data-aos="fade-up" data-aos-delay="100">
                 <div class="article-img" style="background-image: url('https://images.unsplash.com/photo-1530026186672-2cd00ffc50fe?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
                 <div class="article-content">
-                    <h3>Boosting Fertility Naturally</h3>
-                    <p>Discover lifestyle changes that can improve your chances of conception.</p>
-                    <a href="#" class="read-more">Read more <i class="fas fa-arrow-right"></i></a>
+                    <h3>Ƙara Haifuwa ta Halitta</h3>
+                    <p>Gano canje-canjen rayuwa waɗanda zasu iya inganta damar haihuwa.</p>
+                    <a href="#" class="read-more">Kara karantawa <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
             
             <div class="article-card" data-aos="fade-up" data-aos-delay="200">
                 <div class="article-img" style="background-image: url('https://images.unsplash.com/photo-1505576399279-565b52d4ac71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
                 <div class="article-content">
-                    <h3>Signs of Ovulation</h3>
-                    <p>Recognize the physical signs that indicate you're ovulating.</p>
-                    <a href="#" class="read-more">Read more <i class="fas fa-arrow-right"></i></a>
+                    <h3>Alamun Ovulation</h3>
+                    <p>Gano alamun jiki waɗanda ke nuna cewa kuna cikin ovulation.</p>
+                    <a href="#" class="read-more">Kara karantawa <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
     </section>
 
-
-    
-          
-        <!-- <h3 style="margin: 2rem 0 1rem;"><i class="fas fa-video"></i> Prenatal Exercise Videos</h3>
-        <div class="exercise-videos">
-            <div class="video-card" data-aos="fade-up">
-                <div class="video-thumbnail" style="background-image: url('https://i.ytimg.com/vi/7Cdsro0odR4/maxresdefault.jpg');">
-                    <div class="play-icon"><i class="fas fa-play"></i></div>
-                </div>
-                <div class="video-info">
-                    <h4>Prenatal Yoga for All Trimesters</h4>
-                    <p>20 min • Gentle stretches and breathing</p>
-                </div>
-            </div>
-            
-            <div class="video-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="video-thumbnail" style="background-image: url('https://i.ytimg.com/vi/1f8Hwh8z1Dk/maxresdefault.jpg');">
-                    <div class="play-icon"><i class="fas fa-play"></i></div>
-                </div>
-                <div class="video-info">
-                    <h4>Pregnancy-Safe Cardio Workout</h4>
-                    <p>30 min • Low-impact movements</p>
-                </div>
-            </div> 
-            
-            <div class="video-card" data-aos="fade-up" data-aos-delay="200">
-                <div class="video-thumbnail" style="background-image: url('https://i.ytimg.com/vi/1fq4R1OKkEs/maxresdefault.jpg');">
-                    <div class="play-icon"><i class="fas fa-play"></i></div>
-                </div>
-                <div class="video-info">
-                    <h4>Pelvic Floor Exercises</h4>
-                    <p>15 min • Prepare for labor and recovery</p>
-                </div>
-            </div>
-        </div>
-     </div> 
-     -->
-        
     <!-- Footer -->
      <footer class="footer">
         <div class="footer-content">
@@ -655,7 +615,7 @@
                 <a href="#"><i class="fab fa-pinterest"></i></a>
             </div>
             <div class="copyright">
-                <p>&copy; <span id="year"></span> Yar'aro Creative. All rights reserved.</p>
+                <p>&copy; <span id="year"></span> Yar'aro Creative. Duk haƙƙoƙin suna kiyayye.</p>
             </div>
         </div>
     </footer>
@@ -681,7 +641,6 @@
       }
     });
   });
-
 
 
 
