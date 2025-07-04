@@ -9,9 +9,17 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
-    <style>
-  
-    </style>
+   <style>
+  .nav-item.active {
+    background-color: #e0f7fa; /* Light background */
+    color: #007bff;            /* Highlight color */
+    font-weight: bold;
+  }
+  .nav-item.active i {
+    color: #007bff;
+  }
+</style>
+
 </head>
 <body>
      <!-- Navigation Bar [Menu] -->
@@ -308,6 +316,21 @@
             duration: 800,
             offset: 100,
         });
+
+        
+  document.addEventListener('DOMContentLoaded', function () {
+    const navItems = document.querySelectorAll('.bottom-nav .nav-item');
+    const currentPage = window.location.pathname.split('/').pop();
+
+    navItems.forEach(link => {
+      const linkPage = link.getAttribute('href');
+      if (linkPage === currentPage) {
+        link.classList.add('active');
+      }
+    });
+  });
+
+
 
         // Mobile Menu Toggle
         const hamburger = document.getElementById('hamburger');
