@@ -39,72 +39,49 @@
     </div>
     <div class="mobile-menu">
         
-        <!-- Bottom Navigation Inside Mobile Menu - 3 columns -->
+       <!-- Bottom Navigation Inside Mobile Menu - 3 columns -->
 <div class="bottom-nav">
-    <!-- Home -->
-    <a href="index.html" class="nav-item">
-        <i class="fas fa-home" aria-hidden="true"></i>
-        <span>Shafin Gida</span>
-    </a>
-
-    <!-- Fertility Tools -->
+    <!-- Column 1: Fertility & Tools -->
     <a href="ovulation.html" class="nav-item">
         <i class="fas fa-venus-mars" aria-hidden="true"></i>
-        <span>Kalkuleta Ovulation</span>
+        <span>Kalkuletar Ovulation</span>
     </a>
     <a href="tracker.html" class="nav-item">
         <i class="fas fa-baby-carriage" aria-hidden="true"></i>
-        <span>Kalkuletar Gano EDD</span>
+        <span>Kalkuletar Binciko EDD </span>
     </a>
-
-    <!-- Pregnancy Info -->
-    <a href="getting-pregnant.html" class="nav-item">
-        <i class="fas fa-heartbeat" aria-hidden="true"></i>
-        <span>Shirye-shiryen Daukar Ciki</span>
-    </a>
-    <a href="pregnancy.html" class="nav-item">
-        <i class="fas fa-baby" aria-hidden="true"></i>
-        <span>Goyon Ciki</span>
-    </a>
-
-    <!-- Parenting -->
-    <a href="parenting.html" class="nav-item">
-        <i class="fas fa-child" aria-hidden="true"></i>
-        <span>Kula da Yara</span>
-    </a>
-
-    <!-- Nearby Hospitals -->
     <a href="hospital.html" class="nav-item">
         <i class="fas fa-hospital-user" aria-hidden="true"></i>
         <span>Nemo Asibitoci Mafi Kusa</span>
     </a>
 
-    <!-- Nutrition Tips -->
-    <a href="nutrition.html" class="nav-item">
-        <i class="fas fa-apple-alt" aria-hidden="true"></i>
-        <span>Abinci mai Gina Jiki</span>
+
+    <!-- Column 3: Pregnancy & Parenting -->
+     <a href="getting-pregnant.html" class="nav-item">
+        <i class="fas fa-heartbeat" aria-hidden="true"></i>
+        <span>Shirye-shiryen Daukar Ciki</span>
+    </a>
+    <a href="pregnancy.html" class="nav-item">
+        <i class="fas fa-baby" aria-hidden="true"></i>
+        <span>Goyon Ciki (Pregnancy)</span>
+    </a>
+    <a href="parenting.html" class="nav-item">
+        <i class="fas fa-child" aria-hidden="true"></i>
+        <span>Kula da Yara (Parenting)</span>
     </a>
 
-    <!-- FAQs -->
-    <a href="faq.html" class="nav-item">
-        <i class="fas fa-question-circle" aria-hidden="true"></i>
-        <span>Tambayoyi da Amsoshi</span>
-    </a>
-
-    <!-- Blog/Articles -->
-    <a href="blog.html" class="nav-item">
-        <i class="fas fa-newspaper" aria-hidden="true"></i>
-        <span>Labarai da Shawarwari</span>
-    </a>
-
-    <!-- About & Contact -->
-    <a href="about.html" class="nav-item">
+    <!-- Column 2: Getting Pregnant -->
+     <a href="about.html" class="nav-item">
         <i class="fas fa-info-circle" aria-hidden="true"></i>
         <span>Game Da Mu</span>
     </a>
+    <a href="blog.html" class="nav-item">
+        <i class="fas fa-book-medical" aria-hidden="true"></i>
+        <span>Karanta Makaloli</span>
+    </a>
     <a href="contact.html" class="nav-item">
         <i class="fas fa-hands-helping" aria-hidden="true"></i>
-        <span>Tuntube Mu</span>
+        <span>Tuntube mu</span>
     </a>
 </div>
     </div>
@@ -113,22 +90,22 @@
     <!-- Dashboard -->
     <section class="dashboard" id="dashboard">
         <div class="calculator-card" data-aos="fade-up">
-            <h2><i class="fas fa-baby-carriage"></i> Kalkuletar Binciko Ranar Haihuwa - EDD</h2>
+            <h2><i class="fas fa-baby-carriage"></i> Kalkuletar Binciko EDD, Makonnin Ciki, Zangon Ciki da Kwanakin Da Suka Rage Kafin Haihuwa</h2>
             <div class="input-group">
-                <label for="calculation-method">Yi lissafin bisa ga:</label>
+                <label for="calculation-method">Yin Binciken Bisa Ga Tsarin:</label>
                 <select id="calculation-method">
-                    <option value="lmp">Ranar Da Aka Ga Haila Ta Ƙarshe (LMP)</option>
-                    <option value="ed">Kiyasin Ranar Haihuwa - EDD</option>
+                    <option value="lmp">Ranar Da Aka Fara Gani Haila Ta Ƙarshe (LMP)</option>
+                    <option value="ed">Amfani Da EDD - Idan Kinyi Hoton Ciki</option>
                 </select>
             </div>
             
             <div class="input-group" id="lmp-input">
-                <label for="last-period">Ranar farko na haila ta ƙarshe:</label>
+                <label for="last-period">Shigar Da Ranar farko Ta haila ta ƙarshe (LMP):</label>
                 <input type="date" id="last-period">
             </div>
             
             <div class="input-group" id="ed-input" style="display: none;">
-                <label for="due-date">Kiyasin ranar haihuwa - EDD:</label>
+                <label for="due-date">Shigar Da EDD Dinki:</label>
                 <input type="date" id="due-date">
             </div>
             
@@ -149,9 +126,9 @@
             <div class="progress-container">
                 <h3>Ci gaban Ciki</h3>
                 <div class="trimester-progress">
-                    <div class="trimester trimester-1 active-trimester"> Zango Na 1</div>
-                    <div class="trimester trimester-2"> Zango Na 2</div>
-                    <div class="trimester trimester-3">Zango Na 3</div>
+                    <div class="trimester trimester-1 active-trimester">1st</div>
+                    <div class="trimester trimester-2"> 2nd</div>
+                    <div class="trimester trimester-3">3rd</div>
                 </div>
                 <p id="trimester-info"> Yanzu ana cikin zango (Trimester) ta farko  - makonni 1-12 </p>
             </div>
