@@ -357,8 +357,7 @@ body {
 /* ********************************** Index Page Specific Styles ****************************************** */
 /* Hero Section */
 .hero {
-    background: linear-gradient(rgba(255, 214, 220, 0.8), rgba(242, 245, 245, 0.9)), 
-                url('https://images.unsplash.com/photo-1530046339916-102c1e0adeae?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+    background: linear-gradient(rgba(255, 214, 220, 0.8), rgba(242, 245, 245, 0.9));
     background-size: cover;
     background-position: center;
     text-align: center;
@@ -577,8 +576,7 @@ body {
 /* Calculator Section */
 .calculator-section {
     padding: 3rem 2rem;
-    background: linear-gradient(rgba(255, 214, 220, 0.8), rgba(242, 245, 245, 0.9)), 
-                url('https://images.unsplash.com/photo-1516589091380-5d6019716b4c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+    background: linear-gradient(rgba(255, 214, 220, 0.8), rgba(242, 245, 245, 0.9));
     background-size: cover;
     background-position: center;
     text-align: center;
@@ -805,8 +803,7 @@ body {
 /* Dashboard */
 .dashboard {
     padding: 3rem 2rem;
-    background: linear-gradient(rgba(255, 214, 220, 0.8), rgba(242, 245, 245, 0.9)), 
-                url('https://images.unsplash.com/photo-1530046339916-102c1e0adeae?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+    background: linear-gradient(rgba(255, 214, 220, 0.8), rgba(242, 245, 245, 0.9));
     background-size: cover;
     background-position: center;
     text-align: center;
@@ -1089,8 +1086,7 @@ body {
 
         /* ********************************** Blog Page Styles ****************************************** */
 .blog-hero {
-    background: linear-gradient(rgba(255, 214, 220, 0.8), rgba(242, 245, 245, 0.9)), 
-                url('https://images.unsplash.com/photo-1530046339916-102c1e0adeae?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+    background: linear-gradient(rgba(255, 214, 220, 0.8), rgba(242, 245, 245, 0.9)); 
     background-size: cover;
     background-position: center;
     padding: 5rem 2rem;
@@ -2158,8 +2154,7 @@ body {
 
 /* ********************************** About Page Styles ****************************************** */
 .about-hero {
-    background: linear-gradient(rgba(255, 214, 220, 0.8), 
-                url('https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'));
+     background: linear-gradient(rgba(255, 214, 220, 0.8), rgba(242, 245, 245, 0.9));
     background-size: cover;
     background-position: center;
     text-align: center;
@@ -2455,8 +2450,7 @@ body {
 
 /* ********************************** About Page Specific Styles ****************************************** */
 .about-hero {
-    background: linear-gradient(rgba(255, 214, 220, 0.8), rgba(242, 245, 245, 0.9)), 
-                url('https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+    background: linear-gradient(rgba(255, 214, 220, 0.8), rgba(242, 245, 245, 0.9)); 
     background-size: cover;
     background-position: center;
     text-align: center;
@@ -2823,8 +2817,7 @@ body {
 
 /* ********************************** Contact Page Specific Styles ****************************************** */
         .contact-hero {
-            background: linear-gradient(rgba(255, 214, 220, 0.8), rgba(242, 245, 245, 0.9)), 
-                        url('https://images.unsplash.com/photo-1516589091380-5d6019716b4c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background: linear-gradient(rgba(255, 214, 220, 0.8), rgba(242, 245, 245, 0.9));
             background-size: cover;
             background-position: center;
             text-align: center;
@@ -3094,8 +3087,7 @@ body {
 
         /* ********************************** About Page Specific Styles ****************************************** */
 .about-hero {
-    background: linear-gradient(rgba(255, 214, 220, 0.8), rgba(242, 245, 245, 0.9)), 
-                url('https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+    background: linear-gradient(rgba(255, 214, 220, 0.8), rgba(242, 245, 245, 0.9));
     background-size: cover;
     background-position: center;
     text-align: center;
@@ -3328,8 +3320,7 @@ body {
 .cta-section {
     padding: 4rem 0;
     text-align: center;
-    background: linear-gradient(rgba(255, 214, 220, 0.8), rgba(242, 245, 245, 0.9)), 
-                url('https://images.unsplash.com/photo-1573497491765-dccce02b29df?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+     background: linear-gradient(rgba(255, 214, 220, 0.8), rgba(242, 245, 245, 0.9));
     background-size: cover;
     background-position: center;
     color: var(--text);
