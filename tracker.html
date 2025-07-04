@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ciki da Raino - Kalkuleta Ranar Haihuwa</title>
+    <title>Ciki da Raino - Kalkuletar Binciko Lokacin Haihuwa</title>
     <!-- AOS CSS -->
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <!-- Font Awesome -->
@@ -54,7 +54,7 @@
     </a>
     <a href="tracker.html" class="nav-item">
         <i class="fas fa-baby-carriage" aria-hidden="true"></i>
-        <span>Kalkuleta Ranar Haihuwa</span>
+        <span>Kalkuletar Gano EDD</span>
     </a>
 
     <!-- Pregnancy Info -->
@@ -113,12 +113,12 @@
     <!-- Dashboard -->
     <section class="dashboard" id="dashboard">
         <div class="calculator-card" data-aos="fade-up">
-            <h2><i class="fas fa-baby-carriage"></i> Kalkuleta Ranar Haihuwa</h2>
+            <h2><i class="fas fa-baby-carriage"></i> Kalkuletar Binciko Ranar Haihuwa - EDD</h2>
             <div class="input-group">
-                <label for="calculation-method">Yi lissafin bisa:</label>
+                <label for="calculation-method">Yi lissafin bisa ga:</label>
                 <select id="calculation-method">
-                    <option value="lmp">Ranar Ƙarshe na Haihuwa (LMP)</option>
-                    <option value="ed">Kiyasin Ranar Haihuwa</option>
+                    <option value="lmp">Ranar Da Aka Ga Haila Ta Ƙarshe (LMP)</option>
+                    <option value="ed">Kiyasin Ranar Haihuwa - EDD</option>
                 </select>
             </div>
             
@@ -128,16 +128,16 @@
             </div>
             
             <div class="input-group" id="ed-input" style="display: none;">
-                <label for="due-date">Kiyasin ranar haihuwa:</label>
+                <label for="due-date">Kiyasin ranar haihuwa - EDD:</label>
                 <input type="date" id="due-date">
             </div>
             
             <div class="button-group">
                 <button class="btn btn-primary" id="calculate-btn">
-                    <i class="fas fa-calculator"></i> Yi Lissafi
+                    <i class="fas fa-calculator"></i> Lissafa
                 </button>
                 <button class="btn btn-secondary" id="reset-btn">
-                    <i class="fas fa-redo"></i> Sake Fara
+                    <i class="fas fa-redo"></i> Sake Lissafi
                 </button>
             </div>
         </div>
@@ -149,11 +149,11 @@
             <div class="progress-container">
                 <h3>Ci gaban Ciki</h3>
                 <div class="trimester-progress">
-                    <div class="trimester trimester-1 active-trimester">Na 1</div>
-                    <div class="trimester trimester-2">Na 2</div>
-                    <div class="trimester trimester-3">Na 3</div>
+                    <div class="trimester trimester-1 active-trimester"> Zango Na 1</div>
+                    <div class="trimester trimester-2"> Zango Na 2</div>
+                    <div class="trimester trimester-3">Zango Na 3</div>
                 </div>
-                <p id="trimester-info">Kuna cikin trimester na farko (makonni 1-12)</p>
+                <p id="trimester-info"> Yanzu ana cikin zango (Trimester) ta farko  - makonni 1-12 </p>
             </div>
         </div>
     </section>
