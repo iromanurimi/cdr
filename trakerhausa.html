@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="ha">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ciki da Raino | Kalkuletar Bibiyar Ciki</title>
+    <!-- AOS CSS [Animation library] -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <!-- Font Awesome [Icon library] -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+    
+    </style>
+</head>
+<body>
+     <!-- Navigation Bar [Menu] -->
+    <nav class="navbar">
+        <a href="#" class="logo">
+            <img src="images/logona.svg" alt="Logo"> <label for="" style="color: black;">Ciki da Raino</label>
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Shafin Gida</a></li>
+            <li><a href="blog.html">Shirin Daukar Ciki</a></li>
+            <li><a href="blog.html">Goyon Ciki</a></li>
+            <li><a href="contact.html">Tuntuɓe Mu</a></li>
+            <li><a href="about.html">Game Da Mu</a></li>
+            <li><a href="hosapital.html">Asibiti Mafi Kusa</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger">☰</button>
+    </nav>
+    
+    <!-- Mobile Menu [Menu na wayar hannu] -->
+    <div class="overlay" id="overlay"></div>
+    <div class="mobile-menu-container" id="mobile-menu-container">
+    <div class="mobile-menu-header">
+        <button class="close-menu" id="close-menu">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+    <div class="mobile-menu">
+        
+        
+        <!-- Bottom Navigation Inside Mobile Menu - 3 columns -->
+        <div class="bottom-nav">
+            <!-- Column 1 -->
+            <a href="#ovulation" class="nav-item">
+                <i class="fas fa-calculator"></i>
+                <span>Ovulation</span>
+            </a>
+            <a href="#tracker" class="nav-item">
+                <i class="fas fa-baby"></i>
+                <span>Tracker</span>
+            </a>
+            <a href="#hospital" class="nav-item">
+                <i class="fas fa-hospital"></i>
+                <span>Asibiti</span>
+            </a>
+            
+            <!-- Column 2 -->
+            <a href="#nutrition" class="nav-item">
+                <i class="fas fa-utensils"></i>
+                <span>Abinci</span>
+            </a>
+            <a href="#articles" class="nav-item">
+                <i class="fas fa-newspaper"></i>
+                <span>Makaloli</span>
+            </a>
+            <a href="#faq" class="nav-item">
+                <i class="fas fa-question"></i>
+                <span>Tambayoyi</span>
+            </a>
+            
+            <!-- Column 3 -->
+            <a href="#calculator" class="nav-item">
+                <i class="fas fa-calculator"></i>
+                <span>Lissafi</span>
+            </a>
+            <a href="#timeline" class="nav-item">
+                <i class="fas fa-calendar"></i>
+                <span>Jadawali</span>
+            </a>
+            <a href="#resources" class="nav-item">
+                <i class="fas fa-book"></i>
+                <span>Albarku</span>
+            </a>
+        </div>
+    </div>
+</div>
+   
+    <!-- Dashboard [Shafin bayanai] -->
+    <section class="dashboard" id="dashboard">
+        <div class="calculator-card" data-aos="fade-up">
+            <h2><i class="fas fa-baby-carriage"></i> Kalkuletar Bibiyar Ciki</h2>
+            <div class="input-group">
+                <label for="calculation-method">Yin lissafi bisa tsarin:</label>
+                <select id="calculation-method">
+                    <option value="lmp">Ranar da aka fara ganin jinin haila(LMP)</option>
+                    <option value="ed">Ta hanyar amfani da EDD</option>
+                </select>
+            </div>
+            
+            <div class="input-group" id="lmp-input">
+                <label for="last-period">Ranar Farko da aka fara jinin haila ta karshe (LMP):</label>
+                <input type="date" id="last-period">
+            </div>
+            
+            <div class="input-group" id="ed-input" style="display: none;">
+                <label for="due-date">Ranar Lissafinki na EDD:</label>
+                <input type="date" id="due-date">
+            </div>
+            
+            <div class="button-group">
+                <button class="btn btn-primary" id="calculate-btn">
+                    <i class="fas fa-calculator"></i> Lissafa 
+                </button>
+                <button class="btn btn-secondary" id="reset-btn">
+                    <i class="fas fa-redo"></i> Sake Lissafi
+                </button>
+            </div>
+        </div>
+        
+        <div class="pregnancy-info" id="pregnancy-info" style="display: none;" data-aos="fade-up">
+            <h2 id="week-title">Mako na 12: Girman Dan Tayi ya kai girman plum</h2>
+            <p id="due-date-info">Ranar haihuwa (EDD): 5 Janairu, 2025 (yanzu kwanaki 84 suka rage miki)</p>
+            
+            <div class="progress-container">
+                <h3>Ci gaban ciki</h3>
+                <div class="trimester-progress">
+                    <div class="trimester trimester-1 active-trimester">1st</div>
+                    <div class="trimester trimester-2">2nd</div>
+                    <div class="trimester trimester-3">3rd</div>
+                </div>
+                <p id="trimester-info">Kuna cikin trimester na farko (makonni 1-12)</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Fetal Development Timeline [Jadawalin Ci gaban Jariri] -->
+    <h2 class="section-title" id="timeline"><i class="fas fa-baby"></i> Jadawalin Ci gaban Jariri</h2>
+    <div class="timeline">
+        <div class="week-card" data-aos="fade-up">
+            <div class="week-header" onclick="toggleWeek(this)">
+                <h3>Mako na 4: Girmansa yakai Girman irin poppy seed</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="week-content">
+                <div class="week-details">
+                    <div class="baby-size">
+                        <img src="https://www.babycenter.com/ims/2022/02/4-weeks-pregnant_wide.jpg" alt="Jariri mako na 4" class="fetus-image">
+                        <p>Girman embryo: 0.078 inci (2 mm)</p>
+                        <p>Nauyi: Kasa da 0.04 oz (1 gram)</p>
+                    </div>
+                    <div class="milestones">
+                        <h4>Muhimman Abubuwan Ci gaba:</h4>
+                        <ul>
+                            <li>Blastocyst ya shiga cikin mahaifa</li>
+                            <li>Placenta ya fara samuwa</li>
+                            <li>Amniotic sac ya fara girma</li>
+                            <li>Tsarin jini ya fara aiki</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="quick-tip">
+                    <h4><i class="fas fa-lightbulb"></i> Shawarar Inganta Lafiya</h4>
+                    <p>Fara shan kwayoyin prenatal da ke dauke da folic acid don hana lahani ga jijiyoyin jini na jariri.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Makonni na ci gaban jariri (Fetal Development Timeline) -->
+
+<div class="week-card" data-aos="fade-up">
+    <div class="week-header" onclick="toggleWeek(this)">
+        <h3>Mako na 8: Girman irin raspberry</h3>
+        <i class="fas fa-chevron-down"></i>
+    </div>
+    <div class="week-content">
+        <div class="week-details">
+            <div class="baby-size">
+                <img src="https://www.babycenter.com/ims/2022/02/8-weeks-pregnant_wide.jpg" alt="Jariri mako na 8" class="fetus-image">
+                <p>Girman jariri: 0.63 inci (16 mm)</p>
+                <p>Nauyi: 0.04 oz (1 gram)</p>
+            </div>
+            <div class="milestones">
+                <h4>Muhimman Abubuwan Ci gaba:</h4>
+                <ul>
+                    <li>Yatsun hannu da ƙafafu sun fara samuwa</li>
+                    <li>Fatun ido da kunnuwa suna ci gaba</li>
+                    <li>Ana iya gano bugun zuciya</li>
+                    <li>Dukkan manyan gabobin jiki sun fara samuwa</li>
+                </ul>
+            </div>
+        </div>
+        <div class="quick-tip">
+            <h4><i class="fas fa-lightbulb"></i> Shawarar Lafiya</h4>
+            <p>A sha ruwa da yawa kuma a ci ƙananan abinci sau da yawa don magance tashin zuciya da amai.</p>
+        </div>
+    </div>
+</div>
+
+<div class="week-card" data-aos="fade-up">
+    <div class="week-header" onclick="toggleWeek(this)">
+        <h3>Mako na 16: Girman irin avocado</h3>
+        <i class="fas fa-chevron-down"></i>
+    </div>
+    <div class="week-content">
+        <div class="week-details">
+            <div class="baby-size">
+                <img src="https://www.babycenter.com/ims/2022/02/16-weeks-pregnant_wide.jpg" alt="Jariri mako na 16" class="fetus-image">
+                <p>Girman jariri: 4.6 inci (11.6 cm)</p>
+                <p>Nauyi: 3.5 oz (100 grams)</p>
+            </div>
+            <div class="milestones">
+                <h4>Muhimman Abubuwan Ci gaba:</h4>
+                <ul>
+                    <li>Gashin kai ya fara samuwa</li>
+                    <li>Kunnuwa kusan sun koma wurinsu na ƙarshe</li>
+                    <li>Tsokoki suna ƙara ƙarfi</li>
+                    <li>Yiwuwar fara jin motsin jariri</li>
+                </ul>
+            </div>
+        </div>
+        <div class="quick-tip">
+            <h4><i class="fas fa-lightbulb"></i> Shawarar Lafiya</h4>
+            <p>Fara yin aikin ƙwanƙwasa ƙwanƙwasa (Kegels) don shirya haihuwa da hana fitsari ya zubo.</p>
+        </div>
+    </div>
+</div>
+
+<div class="week-card" data-aos="fade-up">
+    <div class="week-header" onclick="toggleWeek(this)">
+        <h3>Mako na 20: Girman irin ayaba</h3>
+        <i class="fas fa-chevron-down"></i>
+    </div>
+    <div class="week-content">
+        <div class="week-details">
+            <div class="baby-size">
+                <img src="https://www.babycenter.com/ims/2022/02/20-weeks-pregnant_wide.jpg" alt="Jariri mako na 20" class="fetus-image">
+                <p>Girman jariri: 6.5 inci (16.4 cm)</p>
+                <p>Nauyi: 10.6 oz (300 grams)</p>
+            </div>
+            <div class="milestones">
+                <h4>Muhimman Abubuwan Ci gaba:</h4>
+                <ul>
+                    <li>Vernix caseosa (kariya) ya fara samuwa</li>
+                    <li>Tsarin barci/farkawa ya kafa</li>
+                    <li>Yiwuwar gano jinsin jariri a binciken jiki</li>
+                    <li>Motsin jariri yana ƙarfi kuma ana iya ganinsa</li>
+                </ul>
+            </div>
+        </div>
+        <div class="quick-tip">
+            <h4><i class="fas fa-lightbulb"></i> Shawarar Lafiya</h4>
+            <p>Kwana a gefe (gwargwadon gefen hagu) don inganta jigilar jini zuwa ga jariri. Yi amfani da matashin kai don tallafawa.</p>
+        </div>
+    </div>
+</div>
+
+<div class="week-card" data-aos="fade-up">
+    <div class="week-header" onclick="toggleWeek(this)">
+        <h3>Mako na 24: Girman irin masara</h3>
+        <i class="fas fa-chevron-down"></i>
+    </div>
+    <div class="week-content">
+        <div class="week-details">
+            <div class="baby-size">
+                <img src="https://www.babycenter.com/ims/2022/02/24-weeks-pregnant_wide.jpg" alt="Jariri mako na 24" class="fetus-image">
+                <p>Girman jariri: 8 inci (20 cm)</p>
+                <p>Nauyi: 1.3 lbs (600 grams)</p>
+            </div>
+            <div class="milestones">
+                <h4>Muhimman Abubuwan Ci gaba:</h4>
+                <ul>
+                    <li>Huhu suna ci gaba cikin sauri</li>
+                    <li>Ƙwayoyin dandano suna samuwa</li>
+                    <li>Ƙwaƙwalwa tana girma cikin sauri</li>
+                    <li>Fatar jiki ta zama ƙasa da ganganci</li>
+                </ul>
+            </div>
+        </div>
+        <div class="quick-tip">
+            <h4><i class="fas fa-lightbulb"></i> Shawarar Lafiya</h4>
+            <p>Ku lura da alamun haihuwa da wuri kamar ƙwanƙwasa na yau da kullun, matsa lamba a ƙashin ƙugu, ko zubar ruwa.</p>
+        </div>
+    </div>
+</div>
+
+<div class="week-card" data-aos="fade-up">
+    <div class="week-header" onclick="toggleWeek(this)">
+        <h3>Mako na 28: Girman irin gauta</h3>
+        <i class="fas fa-chevron-down"></i>
+    </div>
+    <div class="week-content">
+        <div class="week-details">
+            <div class="baby-size">
+                <img src="https://www.babycenter.com/ims/2022/02/28-weeks-pregnant_wide.jpg" alt="Jariri mako na 28" class="fetus-image">
+                <p>Girman jariri: 10 inci (25 cm)</p>
+                <p>Nauyi: 2.2 lbs (1 kg)</p>
+            </div>
+            <div class="milestones">
+                <h4>Muhimman Abubuwan Ci gaba:</h4>
+                <ul>
+                    <li>Idanu suna iya buɗewa da rufewa</li>
+                    <li>Ƙwaƙwalwa tana samar da biliyoyin neurons</li>
+                    <li>Jariri yana iya yin mafarki yayin barci</li>
+                    <li>Huhu suna iya numfashi</li>
+                </ul>
+            </div>
+        </div>
+        <div class="quick-tip">
+            <h4><i class="fas fa-lightbulb"></i> Shawarar Lafiya</h4>
+            <p>Yi allurar Tdap don kare jaririnku daga cutar whooping cough bayan haihuwa.</p>
+        </div>
+    </div>
+</div>
+
+<div class="week-card" data-aos="fade-up">
+    <div class="week-header" onclick="toggleWeek(this)">
+        <h3>Mako na 32: Girman irin jicama</h3>
+        <i class="fas fa-chevron-down"></i>
+    </div>
+    <div class="week-content">
+        <div class="week-details">
+            <div class="baby-size">
+                <img src="https://www.babycenter.com/ims/2022/02/32-weeks-pregnant_wide.jpg" alt="Jariri mako na 32" class="fetus-image">
+                <p>Girman jariri: 11.4 inci (29 cm)</p>
+                <p>Nauyi: 3.75 lbs (1.7 kg)</p>
+            </div>
+            <div class="milestones">
+                <h4>Muhimman Abubuwan Ci gaba:</h4>
+                <ul>
+                    <li>Yana atisayen motsin numfashi</li>
+                    <li>Ƙasusuwa sun cika amma har yanzu suna laushi</li>
+                    <li>Fatar jiki ta zama ƙasa da ƙuƙumi</li>
+                    <li>Yana barci kusan 90-95% na yini</li>
+                </ul>
+            </div>
+        </div>
+        <div class="quick-tip">
+            <h4><i class="fas fa-lightbulb"></i> Shawarar Lafiya</h4>
+            <p>Ku lura da motsin jariri kowace rana. Ku sanar da likita idan motsin ya ragu.</p>
+        </div>
+    </div>
+</div>
+
+<div class="week-card" data-aos="fade-up">
+    <div class="week-header" onclick="toggleWeek(this)">
+        <h3>Mako na 36: Girman irin romaine lettuce</h3>
+        <i class="fas fa-chevron-down"></i>
+    </div>
+    <div class="week-content">
+        <div class="week-details">
+            <div class="baby-size">
+                <img src="https://www.babycenter.com/ims/2022/02/36-weeks-pregnant_wide.jpg" alt="Jariri mako na 36" class="fetus-image">
+                <p>Girman jariri: 12.5 inci (32 cm)</p>
+                <p>Nauyi: 5.75 lbs (2.6 kg)</p>
+            </div>
+            <div class="milestones">
+                <h4>Muhimman Abubuwan Ci gaba:</h4>
+                <ul>
+                    <li>Vernix yana fara ɓacewa</li>
+                    <li>Jariri yana iya kafa a matsayin kai-ƙasa</li>
+                    <li>Huhu sun kusan cika girma</li>
+                    <li>Fatar jiki ta zama mai ruwan hoda da laushi</li>
+                </ul>
+            </div>
+        </div>
+        <div class="quick-tip">
+            <h4><i class="fas fa-lightbulb"></i> Shawarar Lafiya</h4>
+            <p>Ku shirya jakar asibiti da kuma shirin haihuwa.</p>
+        </div>
+    </div>
+</div>
+        
+        <div class="week-card" data-aos="fade-up">
+            <div class="week-header" onclick="toggleWeek(this)">
+                <h3>Mako na 40: Girman kabewa [Pumpkin]</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="week-content">
+                <div class="week-details">
+                    <div class="baby-size">
+                        <img src="https://www.babycenter.com/ims/2022/02/40-weeks-pregnant_wide.jpg" alt="Jariri mako na 40" class="fetus-image">
+                        <p>Girman jariri: 14 inci (36 cm)</p>
+                        <p>Nauyi: 7.5 lbs (3.4 kg)</p>
+                    </div>
+                    <div class="milestones">
+                        <h4>Muhimman Abubuwan Ci gaba:</h4>
+                        <ul>
+                            <li>An kammala ci gaba</li>
+                            <li>Gashin jiki (lanugo) ya ƙare</li>
+                            <li>Farce na yatsu sun wuce yatsun hannu</li>
+                            <li>Shirye don rayuwa a waje da mahaifa</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="quick-tip">
+                    <h4><i class="fas fa-lightbulb"></i> Shawarar Lafiya</h4>
+                    <p>Sanin alamun haihuwa: contractions na yau da kullun, ruwan ciki ko zubar jini. Tuntuɓi likita idan haihuwa ta fara.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Nutrition & Wellness [Abinci mai gina jiki da Lafiya] -->
+    <h2 class="section-title" id="nutrition"><i class="fas fa-utensils"></i> Abinci mai gina jiki da Lafiya</h2>
+    <div class="nutrition">
+        <div class="food-guide">
+            <div class="food-list" data-aos="fade-up">
+                <h3><i class="fas fa-check-circle safe"></i> Abinci mai aminci</h3>
+                <div class="food-item">
+                    <input type="checkbox" id="safe1">
+                    <label for="safe1">Naman da aka dafa sosai</label>
+                </div>
+                <div class="food-item">
+                    <input type="checkbox" id="safe2">
+                    <label for="safe2">Kayan kiwo masu pasteurized</label>
+                </div>
+                <div class="food-item">
+                    <input type="checkbox" id="safe3">
+                    <label for="safe3">Kayan lambu masu ganye</label>
+                </div>
+                <div class="food-item">
+                    <input type="checkbox" id="safe4">
+                    <label for="safe4">Hatsi mai cikakken amfani</label>
+                </div>
+                <div class="food-item">
+                    <input type="checkbox" id="safe5">
+                    <label for="safe5">Ƙwai da aka dafa</label>
+                </div>
+            </div>
+            
+            <div class="food-list" data-aos="fade-up" data-aos-delay="100">
+                <h3><i class="fas fa-times-circle unsafe"></i> Guji Waɗannan</h3>
+                <div class="food-item">
+                    <input type="checkbox" id="unsafe1">
+                    <label for="unsafe1">Kifi ko nama da bai dahu ba</label>
+                </div>
+                <div class="food-item">
+                    <input type="checkbox" id="unsafe2">
+                    <label for="unsafe2">Cuku da bai pasteurized ba</label>
+                </div>
+                <div class="food-item">
+                    <input type="checkbox" id="unsafe3">
+                    <label for="unsafe3">Kifi mai yawan mercury (shark, swordfish)</label>
+                </div>
+                <div class="food-item">
+                    <input type="checkbox" id="unsafe4">
+                    <label for="unsafe4">Yawan shan kofi (>200mg/rana)</label>
+                </div>
+                <div class="food-item">
+                    <input type="checkbox" id="unsafe5">
+                    <label for="unsafe5">Danyen sprouts</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DANGER [Hatari] -->
+    <h2 class="section-title" id="medical-info"><i class="fas fa-heartbeat"></i> Bayanin Likita</h2>
+    <div class="nutrition">
+        <div class="food-guide">
+            <div class="food-list warning-signs" data-aos="fade-up">
+                <h3><i class="fas fa-exclamation-triangle"></i> Alamun Gargadi</h3>
+                <div class="food-item">
+                    <input type="checkbox" id="safe1">
+                    <label for="safe1">Matsanancin ciwon ciki</label>
+                </div>
+                <div class="food-item">
+                    <input type="checkbox" id="safe2">
+                    <label for="safe2">Rage motsin jariri</label>
+                </div>
+                <div class="food-item">
+                    <input type="checkbox" id="safe3">
+                    <label for="safe3">Zubar jini ta farji</label>
+                </div>
+                <div class="food-item">
+                    <input type="checkbox" id="safe4">
+                    <label for="safe4">Matsanancin ciwon kai tare da canje-canje na gani</label>
+                </div>
+                <div class="food-item">
+                    <input type="checkbox" id="safe5">
+                    <label for="safe5">Kumburin fuska/ hannaye kwatsam</label>
+                </div>
+               <p class="emergency">Nemi taimakon likita nan da nan idan kun ga ɗaya daga cikin waɗannan alamun.</p>
+            </div> 
+        </div>
+
+        <div class="food-list" data-aos="fade-up" data-aos-delay="100">
+              <h3><i class="fas fa-calendar-check"></i> Jadawalin Ziyarar Prenatal</h3>
+                <div class="food-item">
+                    <input type="checkbox" id="unsafe1">
+                    <label for="unsafe1"><strong>Makonni 4-28:</strong> Kowace mako 4</label>
+                </div>
+                <div class="food-item">
+                    <input type="checkbox" id="unsafe2">
+                    <label for="unsafe2"><strong>Makonni 28-36:</strong> Kowace mako 2</label>
+                </div>
+                <div class="food-item">
+                    <input type="checkbox" id="unsafe3">
+                    <label for="unsafe3"><strong>Makonni 36-haihuwa:</strong> Kowace mako</label>
+                </div>
+      <br>
+         <h3><i class="fas fa-syringe "></i> Alluran da aka ba da shawara</h3>
+                <div class="food-item">
+                    <input type="checkbox" id="safe1">
+                    <label for="safe1">Allurar mura (kowace trimester)</label>
+                </div>
+                <div class="food-item">
+                    <input type="checkbox" id="safe2">
+                    <label for="safe2">Tdap (tsakanin mako 27-36)</label>
+                </div>
+                <div class="food-item">
+                    <input type="checkbox" id="safe3">
+                    <label for="safe3">Allurar COVID-19 (kamar yadda aka ba da shawara)</label>
+                </div>
+        </div>
+    </div>
+
+    <!-- Education Section [Sashen Ilimi] -->
+    <section class="education-section" id="resources">
+        <h2 class="section-title"><i class="fas fa-book-open"></i> Mukaloli Masu Alaka</h2>
+        <div class="article-grid">
+            <div class="article-card" data-aos="fade-up">
+                <div class="article-img" style="background-image: url('https://images.unsplash.com/photo-1498837167922-ddd27525d352?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                <div class="article-content">
+                    <h3>Fahimtar Tsarin Haila</h3>
+                    <p>Koyi yadda ake bin diddigin haila da gano ranaku mafi yawan haifuwa.</p>
+                    <a href="#" class="read-more">Kara karantawa <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="article-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="article-img" style="background-image: url('https://images.unsplash.com/photo-1530026186672-2cd00ffc50fe?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                <div class="article-content">
+                    <h3>Ƙara Haifuwa ta Halitta</h3>
+                    <p>Gano canje-canjen rayuwa waɗanda zasu inganta damar samun ciki.</p>
+                    <a href="#" class="read-more">Kara karantawa <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="article-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="article-img" style="background-image: url('https://images.unsplash.com/photo-1505576399279-565b52d4ac71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                <div class="article-content">
+                    <h3>Alamun Ovulation</h3>
+                    <p>Gano alamun jiki waɗanda ke nuna cewa kuna cikin ovulation.</p>
+                    <a href="#" class="read-more">Kara karantawa <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- Footer [Ƙarshen shafi] -->
+     <footer class="footer">
+        <div class="footer-content">
+            <h2>Ciki da Raino</h2>
+            <p>Jarida domin lafiyar uwa da ta jariri</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-pinterest"></i></a>
+            </div>
+            <div class="copyright">
+                <p>&copy; <span id="year"></span> Yar'aro Creative. Duk haƙƙoƙin suna kiyayye.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript [Tsarin kwamfuta] -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        // Initialize AOS [Fara Animation library]
+        AOS.init({
+            duration: 800,
+            offset: 100,
+        });
+
+       // Mobile Menu Toggle [Kunna menu na wayar hannu]
+const hamburger = document.getElementById('hamburger');
+const closeMenu = document.getElementById('close-menu');
+const mobileMenuContainer = document.getElementById('mobile-menu-container');
+const overlay = document.getElementById('overlay');
+
+function closeMobileMenu() {
+    mobileMenuContainer.classList.remove('open');
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+// Open menu
+hamburger.addEventListener('click', function() {
+    mobileMenuContainer.classList.add('open');
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+});
+
+// Close menu with close button
+closeMenu.addEventListener('click', closeMobileMenu);
+
+// Close menu with overlay
+overlay.addEventListener('click', closeMobileMenu);
+
+// Close menu when clicking on any link
+document.querySelectorAll('.mobile-menu a, .bottom-nav .nav-item').forEach(link => {
+    link.addEventListener('click', closeMobileMenu);
+});
+//JavaScript for Active State 
+
+document.querySelectorAll('.nav-item').forEach(item => {
+    item.addEventListener('click', function() {
+        document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
+        this.classList.add('active');
+    });
+});
+
+        
+        // Set current year in footer [Sanya shekara ta yanzu a ƙasan shafi]
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // Toggle calculation method [Canza hanyar lissafi]
+        document.getElementById('calculation-method').addEventListener('change', function() {
+            if (this.value === 'lmp') {
+                document.getElementById('lmp-input').style.display = 'block';
+                document.getElementById('ed-input').style.display = 'none';
+            } else {
+                document.getElementById('lmp-input').style.display = 'none';
+                document.getElementById('ed-input').style.display = 'block';
+            }
+        });
+        
+        // Calculate due date [Yi lissafin ranar haihuwa]
+        document.getElementById('calculate-btn').addEventListener('click', function() {
+            const method = document.getElementById('calculation-method').value;
+            let dueDate, lastPeriod;
+            
+            if (method === 'lmp') {
+                const lmp = new Date(document.getElementById('last-period').value);
+                if (isNaN(lmp.getTime())) {
+                    alert('Da fatan za a shigar da ranar haila ta ƙarshe mai inganci');
+                    return;
+                }
+                
+                // Calculate due date (LMP + 280 days)
+                dueDate = new Date(lmp);
+                dueDate.setDate(dueDate.getDate() + 280);
+                lastPeriod = lmp;
+            } else {
+                dueDate = new Date(document.getElementById('due-date').value);
+                if (isNaN(dueDate.getTime())) {
+                    alert('Da fatan za a shigar da ranar haihuwa mai inganci');
+                    return;
+                }
+                
+                // Calculate LMP (due date - 280 days)
+                lastPeriod = new Date(dueDate);
+                lastPeriod.setDate(lastPeriod.getDate() - 280);
+            }
+            
+            // Calculate current week of pregnancy [Yi lissafin mako na ciki na yanzu]
+            const today = new Date();
+            const daysPassed = Math.floor((today - lastPeriod) / (1000 * 60 * 60 * 24));
+            const weeks = Math.floor(daysPassed / 7);
+            const daysLeft = Math.floor((dueDate - today) / (1000 * 60 * 60 * 24));
+            
+            // Update UI [Sabunta bayanan shafi]
+            document.getElementById('week-title').textContent = `Mako na ${weeks}: Jariri girman ${getFruitSize(weeks)} ne`;
+            document.getElementById('due-date-info').textContent = `Ranar haihuwa: ${formatDate(dueDate)} (${daysLeft} kwanaki da suka rage)`;
+            
+            // Update trimester info [Sabunta bayanan trimester]
+            let trimester;
+            if (weeks < 13) {
+                trimester = 'farko';
+            } else if (weeks < 27) {
+                trimester = 'biyu';
+            } else {
+                trimester = 'uku';
+            }
+            
+            document.getElementById('trimester-info').textContent = `Kuna cikin trimester na ${trimester} (makonni ${trimester === 'farko' ? '1-12' : trimester === 'biyu' ? '13-26' : '27-40'})`;
+            
+            // Highlight active trimester [Nuna trimester na yanzu]
+            document.querySelectorAll('.trimester').forEach(el => el.classList.remove('active-trimester'));
+            document.querySelector(`.trimester-${trimester === 'farko' ? '1' : trimester === 'biyu' ? '2' : '3'}`).classList.add('active-trimester');
+            
+            // Show results [Nuna sakamako]
+            document.getElementById('pregnancy-info').style.display = 'block';
+            
+            // Scroll to pregnancy info [Juya zuwa bayanan ciki]
+            document.getElementById('pregnancy-info').scrollIntoView({ behavior: 'smooth' });
+        });
+        
+        // Reset calculator [Sake saitin kalkuleta]
+        document.getElementById('reset-btn').addEventListener('click', function() {
+            document.getElementById('last-period').value = '';
+            document.getElementById('due-date').value = '';
+            document.getElementById('pregnancy-info').style.display = 'none';
+        });
+        
+        // Toggle week cards [Nuna/ɓoye bayanan mako]
+        function toggleWeek(header) {
+            const content = header.nextElementSibling;
+            const icon = header.querySelector('i');
+            
+            content.classList.toggle('active');
+            
+            if (content.classList.contains('active')) {
+                icon.classList.remove('fa-chevron-down');
+                icon.classList.add('fa-chevron-up');
+            } else {
+                icon.classList.remove('fa-chevron-up');
+                icon.classList.add('fa-chevron-down');
+            }
+        }
+        
+        // Format date as "Month Day, Year" [Tsara kwanan watan]
+        function formatDate(date) {
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return date.toLocaleDateString('ha', options);
+        }
+        
+        // Get fruit/vegetable size comparison for week [Samun kwatankwacin girman 'ya'yan itace ga mako]
+        function getFruitSize(week) {
+            const sizes = {
+                4: 'irin poppy seed', 5: 'irin sesame seed', 6: 'irin lentil', 7: 'irin blueberry', 
+                8: 'irin raspberry', 9: 'irin cherry', 10: 'irin strawberry', 11: 'irin lemun tsami', 
+                12: 'irin plum', 13: 'irin peach', 14: 'irin lemon', 15: 'irin apple', 
+                16: 'irin avocado', 17: 'irin pear', 18: 'irin bell pepper', 19: 'irin tomato', 
+                20: 'irin ayaba', 21: 'irin karas', 22: 'irin spaghetti squash', 23: 'irin grapefruit',
+                24: 'irin masara', 25: 'irin rutabaga', 26: 'irin scallion', 27: 'irin cauliflower',
+                28: 'irin gauta', 29: 'irin butternut squash', 30: 'irin cabbage', 31: 'irin kwakwa',
+                32: 'irin jicama', 33: 'irin abarba', 34: 'irin melon', 35: 'irin honeydew',
+                36: 'irin romaine lettuce', 37: 'irin swiss chard', 38: 'irin leek', 39: 'irin ƙaramin watermelon',
+                40: 'irin kabewa'
+            };
+            return sizes[week] || 'irin watermelon';
+        }
+    </script>
+</body>
+</html>

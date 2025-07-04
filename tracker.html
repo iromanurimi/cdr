@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ciki da Raino - Kalkuletar Bibiyar Ciki</title>
+    <!-- AOS CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+        
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+     <!-- Navigation Bar -->
+    <!-- Navigation Bar [Menu] -->
+    <nav class="navbar">
+        <a href="#" class="logo">
+            <img src="images/logona.svg" alt="Logo"> <label for="" style="color: black;">Ciki da Raino</label>
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Shafin Gida</a></li>
+            <li><a href="blog.html">Shirin Daukar Ciki</a></li>
+            <li><a href="blog.html">Goyon Ciki</a></li>
+            <li><a href="contact.html">Tuntuɓe Mu</a></li>
+            <li><a href="about.html">Game Da Mu</a></li>
+            <li><a href="hosapital.html">Asibiti Mafi Kusa</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger">☰</button>
+    </nav>
+    
+    <!-- Mobile Menu [Menu na wayar hannu] -->
+    <div class="overlay" id="overlay"></div>
+    <div class="mobile-menu-container" id="mobile-menu-container">
+    <div class="mobile-menu-header">
+        <button class="close-menu" id="close-menu">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+    <div class="mobile-menu">
+        
+        
+        <!-- Bottom Navigation Inside Mobile Menu - 3 columns -->
+        <div class="bottom-nav">
+            <!-- Column 1 -->
+            <a href="ovulation.html" class="nav-item">
+                <i class="fas fa-calculator"></i>
+                <span>Lissafa Ovulation</span>
+            </a>
+            <a href="tracker.html" class="nav-item">
+                <i class="fas fa-baby"></i>
+                <span>Bibiyar Ciki</span>
+            </a>
+            <a href="hospital.html" class="nav-item">
+                <i class="fas fa-hospital"></i>
+                <span>Nemo Asibitoci</span>
+            </a>
+            
+            <!-- Column 2 -->
+            <a href="#nutrition" class="nav-item">
+                <i class="fas fa-utensils"></i>
+                <span>Abinci</span>
+            </a>
+            <a href="blog.html" class="nav-item">
+                <i class="fas fa-newspaper"></i>
+                <span>Karanta Makaloli</span>
+            </a>
+            <a href="contact.html" class="nav-item">
+                <i class="fas fa-question"></i>
+                <span>Tuntube mu</span>
+            </a>
+            
+            <!-- Column 3 -->
+            <a href="about.html" class="nav-item">
+                <i class="fas fa-calculator"></i>
+                <span>Game Da Mu</span>
+            </a>
+            <a href="#timeline" class="nav-item">
+                <i class="fas fa-calendar"></i>
+                <span>Jadawali</span>
+            </a>
+            <a href="#resources" class="nav-item">
+                <i class="fas fa-book"></i>
+                <span>Albarku</span>
+            </a>
+        </div>
+    </div>
+</div>
+ 
+    <!-- Dashboard -->
+    <section class="dashboard" id="dashboard">
+        <div class="calculator-card" data-aos="fade-up">
+            <h2><i class="fas fa-baby-carriage"></i> Due Date Calculator</h2>
+            <div class="input-group">
+                <label for="calculation-method">Calculate based on:</label>
+                <select id="calculation-method">
+                    <option value="lmp">Last Menstrual Period (LMP)</option>
+                    <option value="ed">Estimated Due Date</option>
+                </select>
+            </div>
+            
+            <div class="input-group" id="lmp-input">
+                <label for="last-period">First day of last period:</label>
+                <input type="date" id="last-period">
+            </div>
+            
+            <div class="input-group" id="ed-input" style="display: none;">
+                <label for="due-date">Estimated due date:</label>
+                <input type="date" id="due-date">
+            </div>
+            
+            <div class="button-group">
+                <button class="btn btn-primary" id="calculate-btn">
+                    <i class="fas fa-calculator"></i> Calculate
+                </button>
+                <button class="btn btn-secondary" id="reset-btn">
+                    <i class="fas fa-redo"></i> Reset
+                </button>
+            </div>
+        </div>
+        
+        <div class="pregnancy-info" id="pregnancy-info" style="display: none;" data-aos="fade-up">
+            <h2 id="week-title">Week 12: Baby is the size of a plum</h2>
+            <p id="due-date-info">Due: January 5, 2025 (84 days left)</p>
+            
+            <div class="progress-container">
+                <h3>Pregnancy Progress</h3>
+                <div class="trimester-progress">
+                    <div class="trimester trimester-1 active-trimester">1st</div>
+                    <div class="trimester trimester-2">2nd</div>
+                    <div class="trimester trimester-3">3rd</div>
+                </div>
+                <p id="trimester-info">You're in your first trimester (weeks 1-12)</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Fetal Development Timeline -->
+    <h2 class="section-title" id="timeline"><i class="fas fa-baby"></i> Fetal Development Timeline</h2>
+    <div class="timeline">
+        <div class="week-card" data-aos="fade-up">
+            <div class="week-header" onclick="toggleWeek(this)">
+                <h3>Week 4: Poppy Seed</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="week-content">
+                <div class="week-details">
+                    <div class="baby-size">
+                        <img src="https://www.babycenter.com/ims/2022/02/4-weeks-pregnant_wide.jpg" alt="Week 4 fetus" class="fetus-image">
+                        <p>Embryo is about 0.078 inches (2 mm) long</p>
+                        <p>Weight: Less than 0.04 oz (1 gram)</p>
+                    </div>
+                    <div class="milestones">
+                        <h4>Key Developments:</h4>
+                        <ul>
+                            <li>Blastocyst implants in uterine wall</li>
+                            <li>Placenta begins to form</li>
+                            <li>Amniotic sac develops</li>
+                            <li>Primitive circulatory system starts</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="quick-tip">
+                    <h4><i class="fas fa-lightbulb"></i> Health Tip</h4>
+                    <p>Start taking prenatal vitamins with folic acid to prevent neural tube defects.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="week-card" data-aos="fade-up">
+            <div class="week-header" onclick="toggleWeek(this)">
+                <h3>Week 8: Raspberry</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="week-content">
+                <div class="week-details">
+                    <div class="baby-size">
+                        <img src="https://www.babycenter.com/ims/2022/02/8-weeks-pregnant_wide.jpg" alt="Week 8 fetus" class="fetus-image">
+                        <p>Baby is about 0.63 inches (16 mm) long</p>
+                        <p>Weight: 0.04 oz (1 gram)</p>
+                    </div>
+                    <div class="milestones">
+                        <h4>Key Developments:</h4>
+                        <ul>
+                            <li>Fingers and toes begin forming</li>
+                            <li>Eyelids and ears developing</li>
+                            <li>Heartbeat can be detected</li>
+                            <li>All major organs have begun to form</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="quick-tip">
+                    <h4><i class="fas fa-lightbulb"></i> Health Tip</h4>
+                    <p>Stay hydrated and eat small, frequent meals to combat morning sickness.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="week-card" data-aos="fade-up">
+            <div class="week-header" onclick="toggleWeek(this)">
+                <h3>Week 12: Plum</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="week-content">
+                <div class="week-details">
+                    <div class="baby-size">
+                        <img src="https://www.babycenter.com/ims/2022/02/12-weeks-pregnant_wide.jpg" alt="Week 12 fetus" class="fetus-image">
+                        <p>Baby is about 2.1 inches (5.4 cm) long</p>
+                        <p>Weight: 0.5 oz (14 grams)</p>
+                    </div>
+                    <div class="milestones">
+                        <h4>Key Developments:</h4>
+                        <ul>
+                            <li>Reflexes begin developing</li>
+                            <li>Fingers and toes fully separated</li>
+                            <li>Eyelids formed but remain closed</li>
+                            <li>Kidneys begin producing urine</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="quick-tip">
+                    <h4><i class="fas fa-lightbulb"></i> Health Tip</h4>
+                    <p>Increase your intake of omega-3 fatty acids (found in salmon, walnuts, and flaxseeds) to support baby's brain development.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="week-card" data-aos="fade-up">
+            <div class="week-header" onclick="toggleWeek(this)">
+                <h3>Week 16: Avocado</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="week-content">
+                <div class="week-details">
+                    <div class="baby-size">
+                        <img src="https://www.babycenter.com/ims/2022/02/16-weeks-pregnant_wide.jpg" alt="Week 16 fetus" class="fetus-image">
+                        <p>Baby is about 4.6 inches (11.6 cm) long</p>
+                        <p>Weight: 3.5 oz (100 grams)</p>
+                    </div>
+                    <div class="milestones">
+                        <h4>Key Developments:</h4>
+                        <ul>
+                            <li>Pattern of scalp hair beginning</li>
+                            <li>Ears nearly in final position</li>
+                            <li>Muscles getting stronger</li>
+                            <li>Possible first flutters of movement</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="quick-tip">
+                    <h4><i class="fas fa-lightbulb"></i> Health Tip</h4>
+                    <p>Start doing pelvic floor exercises (Kegels) to prepare for childbirth and prevent incontinence.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="week-card" data-aos="fade-up">
+            <div class="week-header" onclick="toggleWeek(this)">
+                <h3>Week 20: Banana</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="week-content">
+                <div class="week-details">
+                    <div class="baby-size">
+                        <img src="https://www.babycenter.com/ims/2022/02/20-weeks-pregnant_wide.jpg" alt="Week 20 fetus" class="fetus-image">
+                        <p>Baby is about 6.5 inches (16.4 cm) long</p>
+                        <p>Weight: 10.6 oz (300 grams)</p>
+                    </div>
+                    <div class="milestones">
+                        <h4>Key Developments:</h4>
+                        <ul>
+                            <li>Vernix caseosa (protective coating) forms</li>
+                            <li>Regular sleep/wake cycles established</li>
+                            <li>Possible gender reveal at anatomy scan</li>
+                            <li>Stronger, more noticeable movements</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="quick-tip">
+                    <h4><i class="fas fa-lightbulb"></i> Health Tip</h4>
+                    <p>Sleep on your side (preferably left) to improve circulation to your baby. Use pillows for support.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="week-card" data-aos="fade-up">
+            <div class="week-header" onclick="toggleWeek(this)">
+                <h3>Week 24: Corn</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="week-content">
+                <div class="week-details">
+                    <div class="baby-size">
+                        <img src="https://www.babycenter.com/ims/2022/02/24-weeks-pregnant_wide.jpg" alt="Week 24 fetus" class="fetus-image">
+                        <p>Baby is about 8 inches (20 cm) long</p>
+                        <p>Weight: 1.3 lbs (600 grams)</p>
+                    </div>
+                    <div class="milestones">
+                        <h4>Key Developments:</h4>
+                        <ul>
+                            <li>Lungs developing rapidly</li>
+                            <li>Taste buds forming</li>
+                            <li>Brain growing quickly</li>
+                            <li>Skin becoming less transparent</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="quick-tip">
+                    <h4><i class="fas fa-lightbulb"></i> Health Tip</h4>
+                    <p>Watch for signs of preterm labor like regular contractions, pelvic pressure, or fluid leakage.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="week-card" data-aos="fade-up">
+            <div class="week-header" onclick="toggleWeek(this)">
+                <h3>Week 28: Eggplant</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="week-content">
+                <div class="week-details">
+                    <div class="baby-size">
+                        <img src="https://www.babycenter.com/ims/2022/02/28-weeks-pregnant_wide.jpg" alt="Week 28 fetus" class="fetus-image">
+                        <p>Baby is about 10 inches (25 cm) long</p>
+                        <p>Weight: 2.2 lbs (1 kg)</p>
+                    </div>
+                    <div class="milestones">
+                        <h4>Key Developments:</h4>
+                        <ul>
+                            <li>Eyes can open and close</li>
+                            <li>Brain developing billions of neurons</li>
+                            <li>Baby can dream during REM sleep</li>
+                            <li>Lungs capable of breathing air</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="quick-tip">
+                    <h4><i class="fas fa-lightbulb"></i> Health Tip</h4>
+                    <p>Get your Tdap vaccine to protect your baby from whooping cough after birth.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="week-card" data-aos="fade-up">
+            <div class="week-header" onclick="toggleWeek(this)">
+                <h3>Week 32: Jicama</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="week-content">
+                <div class="week-details">
+                    <div class="baby-size">
+                        <img src="https://www.babycenter.com/ims/2022/02/32-weeks-pregnant_wide.jpg" alt="Week 32 fetus" class="fetus-image">
+                        <p>Baby is about 11.4 inches (29 cm) long</p>
+                        <p>Weight: 3.75 lbs (1.7 kg)</p>
+                    </div>
+                    <div class="milestones">
+                        <h4>Key Developments:</h4>
+                        <ul>
+                            <li>Practicing breathing movements</li>
+                            <li>Bones fully formed but still soft</li>
+                            <li>Skin becoming less wrinkled</li>
+                            <li>Sleeping 90-95% of the day</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="quick-tip">
+                    <h4><i class="fas fa-lightbulb"></i> Health Tip</h4>
+                    <p>Monitor baby's movements daily. Report any decrease in activity to your healthcare provider.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="week-card" data-aos="fade-up">
+            <div class="week-header" onclick="toggleWeek(this)">
+                <h3>Week 36: Romaine Lettuce</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="week-content">
+                <div class="week-details">
+                    <div class="baby-size">
+                        <img src="https://www.babycenter.com/ims/2022/02/36-weeks-pregnant_wide.jpg" alt="Week 36 fetus" class="fetus-image">
+                        <p>Baby is about 12.5 inches (32 cm) long</p>
+                        <p>Weight: 5.75 lbs (2.6 kg)</p>
+                    </div>
+                    <div class="milestones">
+                        <h4>Key Developments:</h4>
+                        <ul>
+                            <li>Vernix covering begins to disappear</li>
+                            <li>Baby may settle into head-down position</li>
+                            <li>Lungs nearly fully developed</li>
+                            <li>Skin becoming pink and smooth</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="quick-tip">
+                    <h4><i class="fas fa-lightbulb"></i> Health Tip</h4>
+                    <p>Pack your hospital bag and finalize your birth plan.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="week-card" data-aos="fade-up">
+            <div class="week-header" onclick="toggleWeek(this)">
+                <h3>Week 40: Pumpkin</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="week-content">
+                <div class="week-details">
+                    <div class="baby-size">
+                        <img src="https://www.babycenter.com/ims/2022/02/40-weeks-pregnant_wide.jpg" alt="Week 40 fetus" class="fetus-image">
+                        <p>Baby is about 14 inches (36 cm) long</p>
+                        <p>Weight: 7.5 lbs (3.4 kg)</p>
+                    </div>
+                    <div class="milestones">
+                        <h4>Key Developments:</h4>
+                        <ul>
+                            <li>Full-term development complete</li>
+                            <li>Lanugo (fine hair) mostly gone</li>
+                            <li>Nails may extend past fingertips</li>
+                            <li>Ready for life outside the womb</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="quick-tip">
+                    <h4><i class="fas fa-lightbulb"></i> Health Tip</h4>
+                    <p>Know the signs of labor: regular contractions, water breaking, or bloody show. Contact your provider when labor begins.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Nutrition & Wellness -->
+    <h2 class="section-title" id="nutrition"><i class="fas fa-utensils"></i> Nutrition & Wellness</h2>
+    <div class="nutrition">
+        <div class="food-guide">
+            <div class="food-list" data-aos="fade-up">
+                <h3><i class="fas fa-check-circle safe"></i> Safe Foods</h3>
+                <div class="food-item">
+                    <input type="checkbox" id="safe1">
+                    <label for="safe1">Lean meats (fully cooked)</label>
+                </div>
+                <div class="food-item">
+                    <input type="checkbox" id="safe2">
+                    <label for="safe2">Pasteurized dairy products</label>
+                </div>
+                <div class="food-item">
+                    <input type="checkbox" id="safe3">
+                    <label for="safe3">Leafy green vegetables</label>
+                </div>
+                <div class="food-item">
+                    <input type="checkbox" id="safe4">
+                    <label for="safe4">Whole grains</label>
+                </div>
+                <div class="food-item">
+                    <input type="checkbox" id="safe5">
+                    <label for="safe5">Cooked eggs</label>
+                </div>
+            </div>
+            
+            <div class="food-list" data-aos="fade-up" data-aos-delay="100">
+                <h3><i class="fas fa-times-circle unsafe"></i> Avoid These</h3>
+                <div class="food-item">
+                    <input type="checkbox" id="unsafe1">
+                    <label for="unsafe1">Raw or undercooked seafood</label>
+                </div>
+                <div class="food-item">
+                    <input type="checkbox" id="unsafe2">
+                    <label for="unsafe2">Unpasteurized cheeses</label>
+                </div>
+                <div class="food-item">
+                    <input type="checkbox" id="unsafe3">
+                    <label for="unsafe3">High-mercury fish (shark, swordfish)</label>
+                </div>
+                <div class="food-item">
+                    <input type="checkbox" id="unsafe4">
+                    <label for="unsafe4">Excessive caffeine (>200mg/day)</label>
+                </div>
+                <div class="food-item">
+                    <input type="checkbox" id="unsafe5">
+                    <label for="unsafe5">Raw sprouts</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DANGER -->
+    <h2 class="section-title" id="medical-info"><i class="fas fa-heartbeat"></i>  Medical Information</h2>
+    <div class="nutrition">
+        <div class="food-guide">
+            <div class="food-list warning-signs" data-aos="fade-up">
+                <h3><i class="fas fa-exclamation-triangle"></i> Warning Signs</h3>
+                <div class="food-item">
+                    <input type="checkbox" id="safe1">
+                    <label for="safe1">Severe abdominal pain</label>
+                </div>
+                <div class="food-item">
+                    <input type="checkbox" id="safe2">
+                    <label for="safe2">Decreased fetal movement</label>
+                </div>
+                <div class="food-item">
+                    <input type="checkbox" id="safe3">
+                    <label for="safe3">Vaginal bleeding</label>
+                </div>
+                <div class="food-item">
+                    <input type="checkbox" id="safe4">
+                    <label for="safe4">Severe headaches with vision changes</label>
+                </div>
+                <div class="food-item">
+                    <input type="checkbox" id="safe5">
+                    <label for="safe5">Sudden swelling of face/hands</label>
+                </div>
+               <p class="emergency">Seek immediate medical attention if you experience any of these symptoms.</p>
+            </div> 
+        </div>
+
+        <div class="food-list" data-aos="fade-up" data-aos-delay="100">
+              <h3><i class="fas fa-calendar-check"></i> Prenatal Visit Schedule</h3>
+                <div class="food-item">
+                    <input type="checkbox" id="unsafe1">
+                    <label for="unsafe1"><strong>Weeks 4-28:</strong> Every 4 weeks</label>
+                </div>
+                <div class="food-item">
+                    <input type="checkbox" id="unsafe2">
+                    <label for="unsafe2"><strong>Weeks 28-36:</strong> Every 2 weeks</label>
+                </div>
+                <div class="food-item">
+                    <input type="checkbox" id="unsafe3">
+                    <label for="unsafe3"><strong>Weeks 36-birth:</strong> Weekly</label>
+                </div>
+      <br>
+         <h3><i class="fas fa-syringe "></i> Recommended Vaccines</h3>
+                <div class="food-item">
+                    <input type="checkbox" id="safe1">
+                    <label for="safe1">Flu vaccine (any trimester)</label>
+                </div>
+                <div class="food-item">
+                    <input type="checkbox" id="safe2">
+                    <label for="safe2">Tdap (between 27-36 weeks)</label>
+                </div>
+                <div class="food-item">
+                    <input type="checkbox" id="safe3">
+                    <label for="safe3">COVID-19 vaccine (as recommended)</label>
+                </div>
+        </div>
+    </div>
+
+            
+        
+         
+  <!-- Education Section -->
+    <section class="education-section" id="resources">
+        <h2 class="section-title"><i class="fas fa-book-open"></i> Mukaloli Masu Alaka</h2>
+        <div class="article-grid">
+            <div class="article-card" data-aos="fade-up">
+                <div class="article-img" style="background-image: url('https://images.unsplash.com/photo-1498837167922-ddd27525d352?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                <div class="article-content">
+                    <h3>Understanding Your Cycle</h3>
+                    <p>Learn how to track your menstrual cycle and identify your most fertile days.</p>
+                    <a href="#" class="read-more">Read more <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="article-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="article-img" style="background-image: url('https://images.unsplash.com/photo-1530026186672-2cd00ffc50fe?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                <div class="article-content">
+                    <h3>Boosting Fertility Naturally</h3>
+                    <p>Discover lifestyle changes that can improve your chances of conception.</p>
+                    <a href="#" class="read-more">Read more <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="article-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="article-img" style="background-image: url('https://images.unsplash.com/photo-1505576399279-565b52d4ac71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                <div class="article-content">
+                    <h3>Signs of Ovulation</h3>
+                    <p>Recognize the physical signs that indicate you're ovulating.</p>
+                    <a href="#" class="read-more">Read more <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    
+          
+        <!-- <h3 style="margin: 2rem 0 1rem;"><i class="fas fa-video"></i> Prenatal Exercise Videos</h3>
+        <div class="exercise-videos">
+            <div class="video-card" data-aos="fade-up">
+                <div class="video-thumbnail" style="background-image: url('https://i.ytimg.com/vi/7Cdsro0odR4/maxresdefault.jpg');">
+                    <div class="play-icon"><i class="fas fa-play"></i></div>
+                </div>
+                <div class="video-info">
+                    <h4>Prenatal Yoga for All Trimesters</h4>
+                    <p>20 min • Gentle stretches and breathing</p>
+                </div>
+            </div>
+            
+            <div class="video-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="video-thumbnail" style="background-image: url('https://i.ytimg.com/vi/1f8Hwh8z1Dk/maxresdefault.jpg');">
+                    <div class="play-icon"><i class="fas fa-play"></i></div>
+                </div>
+                <div class="video-info">
+                    <h4>Pregnancy-Safe Cardio Workout</h4>
+                    <p>30 min • Low-impact movements</p>
+                </div>
+            </div> 
+            
+            <div class="video-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="video-thumbnail" style="background-image: url('https://i.ytimg.com/vi/1fq4R1OKkEs/maxresdefault.jpg');">
+                    <div class="play-icon"><i class="fas fa-play"></i></div>
+                </div>
+                <div class="video-info">
+                    <h4>Pelvic Floor Exercises</h4>
+                    <p>15 min • Prepare for labor and recovery</p>
+                </div>
+            </div>
+        </div>
+     </div> 
+     -->
+        
+    <!-- Footer -->
+     <footer class="footer">
+        <div class="footer-content">
+            <h2>Ciki da Raino</h2>
+            <p>Jarida domin lafiyar uwa da ta jariri</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-pinterest"></i></a>
+            </div>
+            <div class="copyright">
+                <p>&copy; <span id="year"></span> Yar'aro Creative. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            offset: 100,
+        });
+
+        // Mobile Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const closeMenu = document.getElementById('close-menu');
+        const mobileMenuContainer = document.getElementById('mobile-menu-container');
+        const overlay = document.getElementById('overlay');
+        
+        hamburger.addEventListener('click', function() {
+            mobileMenuContainer.classList.add('open');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        closeMenu.addEventListener('click', function() {
+            mobileMenuContainer.classList.remove('open');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+        
+        overlay.addEventListener('click', function() {
+            mobileMenuContainer.classList.remove('open');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenuContainer.classList.remove('open');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+        
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // Toggle calculation method
+        document.getElementById('calculation-method').addEventListener('change', function() {
+            if (this.value === 'lmp') {
+                document.getElementById('lmp-input').style.display = 'block';
+                document.getElementById('ed-input').style.display = 'none';
+            } else {
+                document.getElementById('lmp-input').style.display = 'none';
+                document.getElementById('ed-input').style.display = 'block';
+            }
+        });
+        
+        // Calculate due date
+        document.getElementById('calculate-btn').addEventListener('click', function() {
+            const method = document.getElementById('calculation-method').value;
+            let dueDate, lastPeriod;
+            
+            if (method === 'lmp') {
+                const lmp = new Date(document.getElementById('last-period').value);
+                if (isNaN(lmp.getTime())) {
+                    alert('Please enter a valid last menstrual period date');
+                    return;
+                }
+                
+                // Calculate due date (LMP + 280 days)
+                dueDate = new Date(lmp);
+                dueDate.setDate(dueDate.getDate() + 280);
+                lastPeriod = lmp;
+            } else {
+                dueDate = new Date(document.getElementById('due-date').value);
+                if (isNaN(dueDate.getTime())) {
+                    alert('Please enter a valid due date');
+                    return;
+                }
+                
+                // Calculate LMP (due date - 280 days)
+                lastPeriod = new Date(dueDate);
+                lastPeriod.setDate(lastPeriod.getDate() - 280);
+            }
+            
+            // Calculate current week of pregnancy
+            const today = new Date();
+            const daysPassed = Math.floor((today - lastPeriod) / (1000 * 60 * 60 * 24));
+            const weeks = Math.floor(daysPassed / 7);
+            const daysLeft = Math.floor((dueDate - today) / (1000 * 60 * 60 * 24));
+            
+            // Update UI
+            document.getElementById('week-title').textContent = `Week ${weeks}: Baby is the size of a ${getFruitSize(weeks)}`;
+            document.getElementById('due-date-info').textContent = `Due: ${formatDate(dueDate)} (${daysLeft} days left)`;
+            
+            // Update trimester info
+            let trimester;
+            if (weeks < 13) {
+                trimester = 'first';
+            } else if (weeks < 27) {
+                trimester = 'second';
+            } else {
+                trimester = 'third';
+            }
+            
+            document.getElementById('trimester-info').textContent = `You're in your ${trimester} trimester`;
+            
+            // Highlight active trimester
+            document.querySelectorAll('.trimester').forEach(el => el.classList.remove('active-trimester'));
+            document.querySelector(`.trimester-${trimester === 'first' ? '1' : trimester === 'second' ? '2' : '3'}`).classList.add('active-trimester');
+            
+            // Show results
+            document.getElementById('pregnancy-info').style.display = 'block';
+            
+            // Scroll to pregnancy info
+            document.getElementById('pregnancy-info').scrollIntoView({ behavior: 'smooth' });
+        });
+        
+        // Reset calculator
+        document.getElementById('reset-btn').addEventListener('click', function() {
+            document.getElementById('last-period').value = '';
+            document.getElementById('due-date').value = '';
+            document.getElementById('pregnancy-info').style.display = 'none';
+        });
+        
+        // Toggle week cards
+        function toggleWeek(header) {
+            const content = header.nextElementSibling;
+            const icon = header.querySelector('i');
+            
+            // Toggle the active class
+            content.classList.toggle('active');
+            
+            // Toggle the icon
+            if (content.classList.contains('active')) {
+                icon.classList.remove('fa-chevron-down');
+                icon.classList.add('fa-chevron-up');
+            } else {
+                icon.classList.remove('fa-chevron-up');
+                icon.classList.add('fa-chevron-down');
+            }
+        }
+        
+        // Format date as "Month Day, Year"
+        function formatDate(date) {
+            return date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+        }
+        
+        // Get fruit/vegetable size comparison for week
+        function getFruitSize(week) {
+            const sizes = {
+                4: 'poppy seed', 5: 'sesame seed', 6: 'lentil', 7: 'blueberry', 
+                8: 'raspberry', 9: 'cherry', 10: 'strawberry', 11: 'lime', 
+                12: 'plum', 13: 'peach', 14: 'lemon', 15: 'apple', 
+                16: 'avocado', 17: 'pear', 18: 'bell pepper', 19: 'tomato', 
+                20: 'banana', 21: 'carrot', 22: 'spaghetti squash', 23: 'grapefruit',
+                24: 'corn', 25: 'rutabaga', 26: 'scallion', 27: 'cauliflower',
+                28: 'eggplant', 29: 'butternut squash', 30: 'cabbage', 31: 'coconut',
+                32: 'jicama', 33: 'pineapple', 34: 'melon', 35: 'honeydew',
+                36: 'romaine lettuce', 37: 'swiss chard', 38: 'leek', 39: 'mini watermelon',
+                40: 'pumpkin'
+            };
+            return sizes[week] || 'watermelon';
+        }
+    </script>
+</body>
+</html>
