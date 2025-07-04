@@ -38,51 +38,74 @@
     <div class="mobile-menu">
         
         
-        <!-- Bottom Navigation Inside Mobile Menu - 3 columns -->
-        <div class="bottom-nav">
-            <!-- Column 1 -->
-            <a href="ovulation.html" class="nav-item">
-                <i class="fas fa-calculator"></i>
-                <span>Lissafa Ovulation</span>
-            </a>
-            <a href="tracker.html" class="nav-item">
-                <i class="fas fa-baby"></i>
-                <span>Bibiyar Ciki</span>
-            </a>
-            <a href="hospital.html" class="nav-item">
-                <i class="fas fa-hospital"></i>
-                <span>Nemo Asibitoci</span>
-            </a>
-            
-            <!-- Column 2 -->
-            <a href="#nutrition" class="nav-item">
-                <i class="fas fa-utensils"></i>
-                <span>Abinci</span>
-            </a>
-            <a href="blog.html" class="nav-item">
-                <i class="fas fa-newspaper"></i>
-                <span>Karanta Makaloli</span>
-            </a>
-            <a href="contact.html" class="nav-item">
-                <i class="fas fa-question"></i>
-                <span>Tuntube mu</span>
-            </a>
-            
-            <!-- Column 3 -->
-            <a href="about.html" class="nav-item">
-                <i class="fas fa-calculator"></i>
-                <span>Game Da Mu</span>
-            </a>
-            <a href="#timeline" class="nav-item">
-                <i class="fas fa-calendar"></i>
-                <span>Jadawali</span>
-            </a>
-            <a href="#resources" class="nav-item">
-                <i class="fas fa-book"></i>
-                <span>Albarku</span>
-            </a>
-        </div>
-    </div>
+          <!-- Bottom Navigation Inside Mobile Menu - 3 columns -->
+<div class="bottom-nav">
+    <!-- Home -->
+    <a href="index.html" class="nav-item">
+        <i class="fas fa-home" aria-hidden="true"></i>
+        <span>Shafin Gida (Home)</span>
+    </a>
+
+    <!-- Fertility Tools -->
+    <a href="ovulation.html" class="nav-item">
+        <i class="fas fa-venus-mars" aria-hidden="true"></i>
+        <span>Kalkuletar Ovulation</span>
+    </a>
+    <a href="tracker.html" class="nav-item">
+        <i class="fas fa-baby-carriage" aria-hidden="true"></i>
+        <span>Kalkuletar Bibiyar Ciki</span>
+    </a>
+
+    <!-- Pregnancy Info -->
+    <a href="getting-pregnant.html" class="nav-item">
+        <i class="fas fa-heartbeat" aria-hidden="true"></i>
+        <span>Shirye-shiryen Daukar Ciki</span>
+    </a>
+    <a href="pregnancy.html" class="nav-item">
+        <i class="fas fa-baby" aria-hidden="true"></i>
+        <span>Goyon Ciki (Pregnancy)</span>
+    </a>
+
+    <!-- Parenting -->
+    <a href="parenting.html" class="nav-item">
+        <i class="fas fa-child" aria-hidden="true"></i>
+        <span>Kula da Yara (Parenting)</span>
+    </a>
+
+    <!-- Nearby Hospitals -->
+    <a href="hospital.html" class="nav-item">
+        <i class="fas fa-hospital-user" aria-hidden="true"></i>
+        <span>Nemo Asibitoci Mafi Kusa</span>
+    </a>
+
+    <!-- New: Nutrition Tips -->
+    <a href="nutrition.html" class="nav-item">
+        <i class="fas fa-apple-alt" aria-hidden="true"></i>
+        <span>Abinci mai Gina Jiki</span>
+    </a>
+
+    <!-- New: FAQs -->
+    <a href="faq.html" class="nav-item">
+        <i class="fas fa-question-circle" aria-hidden="true"></i>
+        <span>Tambayoyi da Amsoshi</span>
+    </a>
+
+    <!-- New: Blog/Articles -->
+    <a href="blog.html" class="nav-item">
+        <i class="fas fa-newspaper" aria-hidden="true"></i>
+        <span>Labarai da Shawarwari</span>
+    </a>
+
+    <!-- About & Contact -->
+    <a href="about.html" class="nav-item">
+        <i class="fas fa-info-circle" aria-hidden="true"></i>
+        <span>Game Da Mu (About Us)</span>
+    </a>
+    <a href="contact.html" class="nav-item">
+        <i class="fas fa-hands-helping" aria-hidden="true"></i>
+        <span>Tuntube Mu (Contact Us)</span>
+    </a>
+</div>    </div>
 </div>
  
     <!-- Blog Hero Section -->
@@ -350,6 +373,19 @@
             duration: 800,
             offset: 100,
         });
+
+        
+  document.addEventListener('DOMContentLoaded', function () {
+    const navItems = document.querySelectorAll('.bottom-nav .nav-item');
+    const currentPage = window.location.pathname.split('/').pop();
+
+    navItems.forEach(link => {
+      const linkPage = link.getAttribute('href');
+      if (linkPage === currentPage) {
+        link.classList.add('active');
+      }
+    });
+  });
 
         // Mobile Menu Toggle
         const hamburger = document.getElementById('hamburger');
