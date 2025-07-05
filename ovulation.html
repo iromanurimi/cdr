@@ -443,6 +443,62 @@
                 align-items: flex-start;
             }
         }
+
+
+        /* Share menu styles */
+.share-menu {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    z-index: 1000;
+    max-width: 300px;
+    width: 90%;
+}
+
+.share-menu p {
+    margin-top: 0;
+    font-weight: bold;
+    color: #5E5E5E;
+}
+
+.share-menu a, .share-menu button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.share-menu a {
+    background-color: #A2D7D8;
+    color: white;
+}
+
+.share-menu a:hover {
+    background-color: #8bc5c6;
+}
+
+.share-menu button.copy-link {
+    background-color: #FF9AA2;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.share-menu button.cancel-share {
+    background-color: #f0f0f0;
+    color: #5E5E5E;
+    border: none;
+    cursor: pointer;
+}
     </style>
 </head>
 <body>
@@ -773,6 +829,8 @@
 
     <!-- JavaScript -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <!-- Add html2canvas library for image capture -->
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <script>
       // Initialize AOS
       AOS.init({
@@ -1177,65 +1235,139 @@
           }
       }
 
-      // Initialize sharing functionality
-      function setupOvulationSharing() {
-          const shareBtn = document.getElementById('share-ovulation-btn');
-          
-          shareBtn.addEventListener('click', function() {
-              const lastPeriod = new Date(lastPeriodInput.value);
-              const cycleLength = parseInt(cycleLengthSelect.value);
-              const nextPeriod = new Date(lastPeriod);
-              nextPeriod.setDate(nextPeriod.getDate() + cycleLength);
-              const ovulationDate = new Date(nextPeriod);
-              ovulationDate.setDate(ovulationDate.getDate() - 14);
-              const fertileStart = new Date(ovulationDate);
-              fertileStart.setDate(fertileStart.getDate() - 5);
-              const fertileEnd = new Date(ovulationDate);
-              fertileEnd.setDate(fertileEnd.getDate() + 1);
-              
-              const shareData = {
-                  title: 'Sakamakon Kalkuletar Ovulation Na',
-                  text: `Jinin al'ada zata iya dawowa a ranar ${formatDate(nextPeriod)}. Ranar ovulation ita ce ${formatDate(ovulationDate)}. Lokutan daukar ciki suna tsakanin ${formatDate(fertileStart)} zuwa ${formatDate(fertileEnd)}.`,
-                  url: window.location.href
-              };
-              
-              if (navigator.share) {
-                  navigator.share(shareData)
-                      .catch(err => console.log('Error sharing:', err));
-              } else {
-                  // Fallback for browsers without Web Share API
-                  const text = encodeURIComponent(shareData.text);
-                  const url = encodeURIComponent(shareData.url);
-                  
-                  // Create a share menu with multiple options
-                  const shareMenu = document.createElement('div');
-                  shareMenu.className = 'share-menu';
-                  shareMenu.innerHTML = `
-                      <p>Raba ta:</p>
-                      <a href="https://wa.me/?text=${text}" target="_blank">WhatsApp</a>
-                      <a href="mailto:?subject=${encodeURIComponent(shareData.title)}&body=${text}" target="_blank">Imel</a>
-                      <button class="copy-link">Kwafi Hanyar Haɗi</button>
-                      <button class="cancel-share">Soke</button>
-                  `;
-                  
-                  document.body.appendChild(shareMenu);
-                  
-                  // Handle copy link
-                  shareMenu.querySelector('.copy-link').addEventListener('click', function() {
-                      navigator.clipboard.writeText(shareData.url)
-                          .then(() => alert('An kwafi hanyar haɗi!'))
-                          .catch(err => console.error('Ba a iya kwafin rubutu: ', err));
-                      shareMenu.remove();
-                  });
-                  
-                  // Handle cancel
-                  shareMenu.querySelector('.cancel-share').addEventListener('click', function() {
-                      shareMenu.remove();
-                  });
-              }
-          });
-      }
+     // Initialize sharing functionality with image capture
+function setupOvulationSharing() {
+    const shareBtn = document.getElementById('share-ovulation-btn');
+    
+    shareBtn.addEventListener('click', async function() {
+        try {
+            // Show loading state
+            const originalBtnText = shareBtn.innerHTML;
+            shareBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Ana Shirya Hoton...';
+            shareBtn.disabled = true;
 
+            // Get the results data
+            const lastPeriod = new Date(lastPeriodInput.value);
+            const cycleLength = parseInt(cycleLengthSelect.value);
+            const nextPeriod = new Date(lastPeriod);
+            nextPeriod.setDate(nextPeriod.getDate() + cycleLength);
+            const ovulationDate = new Date(nextPeriod);
+            ovulationDate.setDate(ovulationDate.getDate() - 14);
+            const fertileStart = new Date(ovulationDate);
+            fertileStart.setDate(fertileStart.getDate() - 5);
+            const fertileEnd = new Date(ovulationDate);
+            fertileEnd.setDate(fertileEnd.getDate() + 1);
+
+            // Try to capture as image first
+            try {
+                await captureAndShareResults();
+                return;
+            } catch (imageError) {
+                console.log('Image capture failed, falling back to text sharing', imageError);
+            }
+
+            // Fallback to text sharing if image capture fails
+            const shareData = {
+                title: 'Sakamakon Kalkuletar Ovulation Na',
+                text: `Jinin al'ada zata iya dawowa a ranar ${formatDate(nextPeriod)}. 
+                      Ranar ovulation ita ce ${formatDate(ovulationDate)}. 
+                      Lokutan daukar ciki suna tsakanin ${formatDate(fertileStart)} zuwa ${formatDate(fertileEnd)}.`,
+                url: window.location.href
+            };
+            
+            if (navigator.share) {
+                await navigator.share(shareData);
+            } else {
+                // Fallback for browsers without Web Share API
+                const text = encodeURIComponent(shareData.text);
+                const url = encodeURIComponent(shareData.url);
+                
+                const shareMenu = document.createElement('div');
+                shareMenu.className = 'share-menu';
+                shareMenu.innerHTML = `
+                    <p>Raba ta:</p>
+                    <a href="https://wa.me/?text=${text}" target="_blank">WhatsApp</a>
+                    <a href="mailto:?subject=${encodeURIComponent(shareData.title)}&body=${text}" target="_blank">Imel</a>
+                    <button class="copy-link">Kwafi Hanyar Haɗi</button>
+                    <button class="cancel-share">Soke</button>
+                `;
+                
+                document.body.appendChild(shareMenu);
+                
+                shareMenu.querySelector('.copy-link').addEventListener('click', function() {
+                    navigator.clipboard.writeText(shareData.url);
+                    alert('An kwafi hanyar haɗi!');
+                    shareMenu.remove();
+                });
+                
+                shareMenu.querySelector('.cancel-share').addEventListener('click', function() {
+                    shareMenu.remove();
+                });
+            }
+        } catch (err) {
+            console.log('Sharing error:', err);
+        } finally {
+            shareBtn.innerHTML = originalBtnText;
+            shareBtn.disabled = false;
+        }
+    });
+}
+
+// Function to capture the results as an image
+async function captureAndShareResults() {
+    return new Promise(async (resolve, reject) => {
+        try {
+            // Use html2canvas library
+            const canvas = await html2canvas(document.getElementById('results-container'), {
+                scale: 2,
+                logging: false,
+                useCORS: true,
+                allowTaint: true,
+                backgroundColor: '#ffffff',
+                onclone: (clonedDoc) => {
+                    // Hide buttons in the captured image
+                    const buttons = clonedDoc.querySelectorAll('.baby-tracker-actions');
+                    buttons.forEach(btn => btn.style.display = 'none');
+                }
+            });
+
+            // Convert to image
+            const image = canvas.toDataURL('image/png');
+
+            // For mobile devices with Web Share API
+            if (navigator.share && navigator.canShare) {
+                try {
+                    const blob = await (await fetch(image)).blob();
+                    const file = new File([blob], 'sakamakon-ovulation.png', { type: 'image/png' });
+                    
+                    if (navigator.canShare({ files: [file] })) {
+                        await navigator.share({
+                            title: 'Sakamakon Kalkuletar Ovulation Na',
+                            text: 'Duba sakamakon lissafin ovulation dina:',
+                            files: [file]
+                        });
+                        return resolve();
+                    }
+                } catch (shareError) {
+                    console.log('Web Share API with files not supported', shareError);
+                }
+            }
+
+            // For desktop or fallback
+            const link = document.createElement('a');
+            link.href = image;
+            link.download = 'sakamakon-ovulation.png';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            resolve();
+        } catch (error) {
+            console.error('Error capturing image:', error);
+            reject(error);
+        }
+    });
+}
       // Initialize interactive features
       setupOvulationTextToSpeech();
       setupOvulationSharing();
