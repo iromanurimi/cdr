@@ -19,74 +19,434 @@
             100% { transform: rotate(360deg); }
         }
         
-        /* New styles for pregnancy test card */
-        .pregnancy-test-card {
-            background-color: #f8f9fa;
-            border-radius: 10px;
-            padding: 20px;
-            margin-top: 20px;
-            border-left: 5px solid #ff6b6b;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        /* Ovulation Results Container - matches pregnancy tracker style */
+        .ovulation-results-container {
+            background-color: #fff;
+            border-radius: 20px;
+            padding: 25px;
+            margin: 20px auto;
+            max-width: 900px;
+            box-shadow: 0 10px 30px rgba(162, 215, 216, 0.2);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: none;
         }
-        
-        .pregnancy-test-card h3 {
-            color: #ff6b6b;
-            margin-top: 0;
-        }
-        
-        .pregnancy-test-card .test-timing {
-            font-weight: bold;
-            margin: 10px 0;
-        }
-        
-        .test-accuracy {
+
+        .baby-tracker-header {
             display: flex;
             justify-content: space-between;
-            margin: 15px 0;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f5f5f5;
         }
-        
-        .accuracy-item {
-            text-align: center;
-            flex: 1;
-            padding: 0 10px;
+
+        .baby-tracker-header h2 {
+            color: #5E5E5E;
+            font-size: 1.8rem;
+            margin: 0;
+            font-weight: 600;
         }
-        
-        .accuracy-item .percentage {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #ff6b6b;
+
+        .baby-tracker-actions {
+            display: flex;
+            gap: 10px;
         }
-        
-        .symptoms-list {
-            margin-top: 15px;
+
+        .btn-share, .btn-voice {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
         }
-        
-        .symptoms-list li {
-            margin-bottom: 8px;
+
+        .btn-share {
+            background-color: #A2D7D8;
+            color: white;
+        }
+
+        .btn-voice {
+            background-color: #FFD1DC;
+            color: #5E5E5E;
+        }
+
+        .btn-share:hover {
+            background-color: #8bc5c6;
+            transform: translateY(-2px);
+        }
+
+        .btn-voice:hover {
+            background-color: #ffc0d0;
+            transform: translateY(-2px);
+        }
+
+        .tracker-cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .tracker-card {
+            background-color: #fff;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
-            padding-left: 25px;
+            overflow: hidden;
         }
-        
-        .symptoms-list li:before {
+
+        .tracker-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(162, 215, 216, 0.3);
+        }
+
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .due-date-card .card-icon {
+            background-color: rgba(255, 154, 162, 0.2);
+            color: #FF9AA2;
+        }
+
+        .progress-card .card-icon {
+            background-color: rgba(162, 215, 216, 0.2);
+            color: #A2D7D8;
+        }
+
+        .baby-dev-card .card-icon {
+            background-color: rgba(255, 214, 220, 0.3);
+            color: #FFD1DC;
+        }
+
+        .health-tips-card .card-icon {
+            background-color: rgba(255, 154, 162, 0.2);
+            color: #FF9AA2;
+        }
+
+        .card-content h3 {
+            color: #5E5E5E;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .due-date {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #FF9AA2;
+            margin-bottom: 10px;
+        }
+
+        .countdown {
+            font-size: 0.95rem;
+            color: #777;
+            font-weight: 500;
+        }
+
+        .week-display {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #A2D7D8;
+            margin-bottom: 15px;
+        }
+
+        .progress-container {
+            margin-bottom: 15px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 8px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #FF9AA2, #FFD1DC);
+            border-radius: 10px;
+            transition: width 0.5s ease;
+        }
+
+        .progress-percent {
+            font-size: 0.9rem;
+            color: #777;
+            text-align: right;
+        }
+
+        .trimester-info {
+            font-size: 0.9rem;
+            color: #A2D7D8;
+            font-weight: 500;
+            padding: 5px 10px;
+            background-color: rgba(162, 215, 216, 0.1);
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        .baby-size {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .size-comparison {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #FF9AA2;
+            flex: 1;
+        }
+
+        .size-image img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            border-radius: 50%;
+            background-color: rgba(255, 214, 220, 0.3);
+            padding: 10px;
+        }
+
+        .baby-milestones ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        .baby-milestones li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            font-size: 0.95rem;
+            color: #666;
+        }
+
+        .baby-milestones li:before {
             content: "•";
-            color: #ff6b6b;
+            color: #FF9AA2;
             font-size: 1.5rem;
             position: absolute;
-            left: 0;
-            top: -5px;
+            left: 5px;
+            top: 2px;
         }
-        
-        .next-steps {
-            margin-top: 20px;
-            padding-top: 15px;
-            border-top: 1px solid #eee;
+
+        .health-tip {
+            background-color: rgba(162, 215, 216, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .reminder {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            color: #FF9AA2;
+            font-weight: 500;
+            padding: 10px;
+            background-color: rgba(255, 154, 162, 0.1);
+            border-radius: 10px;
+        }
+
+        .visual-progress-container {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 2px solid #f5f5f5;
+        }
+
+        .circular-progress {
+            position: relative;
+            width: 120px;
+            height: 120px;
+        }
+
+        .progress-ring {
+            transform: rotate(-90deg);
+        }
+
+        .progress-ring-circle {
+            transition: stroke-dashoffset 0.5s ease;
+        }
+
+        .progress-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #FF9AA2;
+        }
+
+        .pregnancy-timeline {
+            flex: 1;
+            height: 8px;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            top: -10px;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .marker-dot {
+            width: 20px;
+            height: 20px;
+            background-color: #FF9AA2;
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .marker-label {
+            margin-top: 5px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #777;
+            white-space: nowrap;
+        }
+
+        /* Calendar Container - unchanged from original */
+        .calendar-container {
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 2px solid #f5f5f5;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .calendar-nav {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .calendar {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .calendar th {
+            padding: 10px;
+            text-align: center;
+            color: #5E5E5E;
+            font-weight: 500;
+        }
+
+        .calendar td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #f0f0f0;
+            height: 40px;
+            position: relative;
+        }
+
+        .calendar td.today {
+            background-color: rgba(162, 215, 216, 0.2);
+            font-weight: 600;
+        }
+
+        .calendar td.fertile-day {
+            background-color: rgba(255, 154, 162, 0.2);
+        }
+
+        .calendar td.ovulation-day {
+            background-color: rgba(255, 154, 162, 0.4);
+            font-weight: 600;
+        }
+
+        .calendar td.period-day {
+            background-color: rgba(162, 215, 216, 0.4);
+        }
+
+        .day-number {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+        }
+
+        .day-label {
+            font-size: 0.7rem;
+            position: absolute;
+            bottom: 2px;
+            left: 0;
+            right: 0;
+            text-align: center;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .visual-progress-container {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+            
+            .pregnancy-timeline {
+                width: 100%;
+            }
+            
+            .baby-tracker-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .baby-tracker-actions {
+                width: 100%;
+                justify-content: flex-end;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .tracker-cards-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .baby-size {
+                flex-direction: column;
+                align-items: flex-start;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation Bar -->
-       <!-- Navigation Bar -->
-     <!-- Navigation Bar [Menu] -->
+    <!-- Navigation Bar [Menu] -->
     <nav class="navbar">
         <a href="#" class="logo">
             <img src="images/logona.svg" alt="Logo"> <label for="" style="color: black;">Ciki da Raino</label>
@@ -112,9 +472,7 @@
     </div>
     <div class="mobile-menu">
         
-        
-       
-  <!-- Bottom Navigation Inside Mobile Menu - 3 columns -->
+      <!-- Bottom Navigation Inside Mobile Menu - 3 columns -->
 <div class="bottom-nav">
     <!-- Home -->
     <a href="index.html" class="nav-item">
@@ -182,11 +540,10 @@
         <span>Tuntube Mu (Contact Us)</span>
     </a>
 </div>
+ 
     </div>
 </div>
 
-    <!-- [Previous navigation code remains the same] -->
-    
     <!-- Ovulation Hero Section -->
     <section class="hospital-hero" data-aos="fade">
         <div class="container">
@@ -235,74 +592,106 @@
             </div>
         </div>
         
-        <div class="results-container" id="results-container" data-aos="fade-up">
-            <h2>Ga Sakamakon Lissafi</h2>
-            <div class="results-grid">
-                <div class="result-card">
-                    <i class="fas fa-calendar-day" style="font-size: 2rem; color: var(--accent); margin-bottom: 0.5rem;"></i>
-                    <h3>Jini Al'ada Zata Iya Dawowa a Ranar</h3>
-                    <p id="next-period">May 15, 2024</p>
-                </div>
-                <div class="result-card">
-                    <i class="fas fa-ovencap" style="font-size: 2rem; color: var(--accent); margin-bottom: 0.5rem;"></i>
-                    <h3>Ranar Zuwan Ovulation</h3>
-                    <p id="ovulation-day">May 1, 2024</p>
-                </div>
-                <div class="result-card">
-                    <i class="fas fa-heart" style="font-size: 2rem; color: var(--accent); margin-bottom: 0.5rem;"></i>
-                    <h3>Lokutan Daukar Ciki</h3>
-                    <p id="fertile-window">April 27 - May 3, 2024</p>
+        <!-- Redesigned Results Container -->
+        <div class="ovulation-results-container" id="results-container" data-aos="fade-up">
+            <div class="baby-tracker-header">
+                <h2>Ga Sakamakon Lissafi</h2>
+                <div class="baby-tracker-actions">
+                    <button id="share-ovulation-btn" class="btn-share">
+                        <i class="fas fa-share-alt"></i> Raba
+                    </button>
+                    <button id="voice-ovulation-btn" class="btn-voice">
+                        <i class="fas fa-volume-up"></i> Saurara
+                    </button>
                 </div>
             </div>
-            
-            <!-- Pregnancy Test Information Card -->
-            <div class="pregnancy-test-card" id="pregnancy-test-card">
-                <h3><i class="fas fa-vial"></i> Bayanin Gwajin Ciki</h3>
-                <p>Idan kun yi jima'i a lokacin daukar ciki kuma kuna jiran sakamakon gwajin ciki, ga wasu bayanai masu amfani:</p>
-                
-                <div class="test-timing">
-                    <h4>Lokacin da zaku iya yin gwajin ciki:</h4>
-                    <p id="test-date-info">Mafi kyau ku jira kwana 1 bayan ranar da kuke tsammanin jinin al'ada (May 16, 2024) don mafi ingantaccen sakamako.</p>
-                </div>
-                
-                <div class="test-accuracy">
-                    <div class="accuracy-item">
-                        <div class="percentage">99%</div>
-                        <div>Bayan ranar jinin al'ada</div>
+
+            <div class="tracker-cards-container">
+                <!-- Next Period Card -->
+                <div class="tracker-card due-date-card">
+                    <div class="card-icon">
+                        <i class="fas fa-calendar-day"></i>
                     </div>
-                    <div class="accuracy-item">
-                        <div class="percentage">90%</div>
-                        <div>Kafin ranar jinin al'ada</div>
-                    </div>
-                    <div class="accuracy-item">
-                        <div class="percentage">75%</div>
-                        <div>Kwana 6 kafin ranar jinin al'ada</div>
+                    <div class="card-content">
+                        <h3>Jini Al'ada Zata Iya Dawowa a Ranar</h3>
+                        <div class="due-date" id="next-period">May 15, 2024</div>
+                        <div class="countdown" id="period-countdown">14 kwanaki sun rage</div>
                     </div>
                 </div>
-                
-                <div class="symptoms-info">
-                    <h4>Alamomin farko na ciki:</h4>
-                    <ul class="symptoms-list">
-                        <li>Jinin al'ada bai zo ba</li>
-                        <li>Zazzabi ko jiri na farko</li>
-                        <li>Jin ciwon nonu</li>
-                        <li>Gajiya da sauri</li>
-                        <li>Ƙara yawan fitsari</li>
-                        <li>Ƙaiƙayi ko rashin jin daɗi</li>
-                    </ul>
+
+                <!-- Ovulation Day Card -->
+                <div class="tracker-card progress-card">
+                    <div class="card-icon">
+                        <i class="fas fa-ovencap"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Ranar Zuwan Ovulation</h3>
+                        <div class="week-display" id="ovulation-day">May 1, 2024</div>
+                        <div class="progress-container">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="ovulation-progress" style="width: 60%;"></div>
+                            </div>
+                            <div class="progress-percent" id="ovulation-percent">60% cikakke</div>
+                        </div>
+                        <div class="trimester-info" id="cycle-phase">Kashi na 2 (Lokacin daukar ciki)</div>
+                    </div>
                 </div>
-                
-                <div class="next-steps">
-                    <h4>Abubuwan da za ku yi idan gwajin ya nuna ciki:</h4>
-                    <ol>
-                        <li>Ku tuntuɓi likita don tabbatarwa</li>
-                        <li>Fara shan abinci mai gina jiki</li>
-                        <li>Daina shan giya ko shan taba</li>
-                        <li>Fara shan kwayoyin folic acid</li>
-                    </ol>
+
+                <!-- Fertile Window Card -->
+                <div class="tracker-card baby-dev-card">
+                    <div class="card-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Lokutan Daukar Ciki</h3>
+                        <div class="baby-size">
+                            <div class="size-comparison">Mafi kyawun lokaci don yin jima'i</div>
+                        </div>
+                        <div class="baby-milestones">
+                            <ul>
+                                <li id="fertile-window">April 27 - May 3, 2024</li>
+                                <li>Mafi yawan haɗarin ciki: <span id="peak-fertility">May 1</span></li>
+                                <li>Yawan haɗarin ciki: <span id="high-fertility">April 29 - May 2</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pregnancy Test Card -->
+                <div class="tracker-card health-tips-card">
+                    <div class="card-icon">
+                        <i class="fas fa-vial"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Bayanin Gwajin Ciki</h3>
+                        <div class="health-tip">
+                            <p id="test-date-info">Mafi kyau ku jira kwana 1 bayan ranar da kuke tsammanin jinin al'ada (May 16, 2024) don mafi ingantaccen sakamako.</p>
+                        </div>
+                        <div class="reminder">
+                            <i class="fas fa-bell"></i> Alamomin farko na ciki: rashin jini, zazzabi, ciwon nonu
+                        </div>
+                    </div>
                 </div>
             </div>
-            
+
+            <!-- Visual Progress -->
+            <div class="visual-progress-container">
+                <div class="circular-progress">
+                    <svg class="progress-ring" width="120" height="120">
+                        <circle class="progress-ring-circle" stroke="#A2D7D8" stroke-width="8" fill="transparent" r="52" cx="60" cy="60"/>
+                        <circle class="progress-ring-circle progress-ring-fill" stroke="#FF9AA2" stroke-width="8" stroke-dasharray="326.56" stroke-dashoffset="130.624" fill="transparent" r="52" cx="60" cy="60"/>
+                    </svg>
+                    <div class="progress-text" id="cycle-progress-text">60%</div>
+                </div>
+                <div class="pregnancy-timeline">
+                    <div class="timeline-marker" style="left: 60%;">
+                        <div class="marker-dot"></div>
+                        <div class="marker-label">Mako 2</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Calendar Section (unchanged) -->
             <div class="calendar-container">
                 <div class="calendar-header">
                     <h3>Kalandar Kwanakin Daukar Ciki</h3>
@@ -446,8 +835,6 @@
       const resultsContainer = document.getElementById('results-container');
       const lastPeriodInput = document.getElementById('last-period');
       const cycleLengthSelect = document.getElementById('cycle-length');
-      const pregnancyTestCard = document.getElementById('pregnancy-test-card');
-      const testDateInfo = document.getElementById('test-date-info');
 
       // Calendar Navigation Variables
       let currentMonth = new Date().getMonth();
@@ -461,9 +848,6 @@
       today.setHours(0, 0, 0, 0); // Normalize time
       const formattedDate = today.toISOString().split('T')[0];
       lastPeriodInput.value = formattedDate;
-
-      // Initially hide pregnancy test card
-      pregnancyTestCard.style.display = 'none';
 
       // Calculate ovulation and fertile window
       calculateBtn.addEventListener('click', function() {
@@ -509,15 +893,53 @@
               document.getElementById('ovulation-day').textContent = formatDate(currentOvulation.date);
               document.getElementById('fertile-window').textContent = 
                   `${formatDate(currentFertileWindow.start)} - ${formatDate(currentFertileWindow.end)}`;
+              document.getElementById('peak-fertility').textContent = formatDate(currentOvulation.date);
+              
+              // Calculate high fertility days (3 days before ovulation)
+              const highFertilityStart = new Date(currentOvulation.date);
+              highFertilityStart.setDate(highFertilityStart.getDate() - 3);
+              document.getElementById('high-fertility').textContent = 
+                  `${formatDate(highFertilityStart)} - ${formatDate(currentOvulation.date)}`;
               
               // Update pregnancy test information
               const testDate = new Date(nextPeriodDate);
               testDate.setDate(testDate.getDate() + 1); // Day after expected period
-              testDateInfo.textContent = `Mafi kyau ku jira kwana 1 bayan ranar da kuke tsammanin jinin al'ada (${formatDate(testDate)}) don mafi ingantaccen sakamako.`;
+              document.getElementById('test-date-info').textContent = 
+                  `Mafi kyau ku jira kwana 1 bayan ranar da kuke tsammanin jinin al'ada (${formatDate(testDate)}) don mafi ingantaccen sakamako.`;
               
-              // Show results and pregnancy test card
+              // Calculate cycle progress
+              const daysPassed = Math.floor((today - lastPeriod) / (1000 * 60 * 60 * 24));
+              const percentComplete = Math.min(100, Math.round((daysPassed / cycleLength) * 100));
+              
+              // Update progress elements
+              document.getElementById('ovulation-progress').style.width = `${percentComplete}%`;
+              document.getElementById('ovulation-percent').textContent = `${percentComplete}% cikakke`;
+              document.getElementById('cycle-progress-text').textContent = `${percentComplete}%`;
+              
+              // Update cycle phase
+              let cyclePhase;
+              if (daysPassed < 5) {
+                  cyclePhase = "Kashi na 1 (Lokacin jini)";
+              } else if (daysPassed < (cycleLength - 14)) {
+                  cyclePhase = "Kashi na 1 (Lokacin girma)";
+              } else if (daysPassed < (cycleLength - 7)) {
+                  cyclePhase = "Kashi na 2 (Lokacin daukar ciki)";
+              } else {
+                  cyclePhase = "Kashi na 2 (Lokacin luteal)";
+              }
+              document.getElementById('cycle-phase').textContent = cyclePhase;
+              
+              // Update countdown to next period
+              const daysRemaining = cycleLength - daysPassed;
+              document.getElementById('period-countdown').textContent = 
+                  `${daysRemaining} kwanaki sun rage`;
+              
+              // Update timeline marker
+              document.querySelector('.timeline-marker').style.left = `${percentComplete}%`;
+              document.querySelector('.marker-label').textContent = `Mako ${Math.floor(daysPassed/7)}`;
+              
+              // Show results
               resultsContainer.style.display = 'block';
-              pregnancyTestCard.style.display = 'block';
               
               // Generate calendar for current month
               currentMonth = today.getMonth();
@@ -575,7 +997,6 @@
           lastPeriodInput.value = formattedDate;
           cycleLengthSelect.value = '28';
           resultsContainer.style.display = 'none';
-          pregnancyTestCard.style.display = 'none';
           ovulationDates = [];
           fertileWindows = [];
           generateCalendar(); // Regenerate calendar without fertility markers
@@ -645,7 +1066,7 @@
                       
                       // Mark current day
                       if (currentDate.getTime() === today.getTime()) {
-                          cell.classList.add('current-day');
+                          cell.classList.add('today');
                       }
                       
                       // Check if we have calculated fertility data
@@ -674,9 +1095,9 @@
                                   if (currentDate.getMonth() === currentMonth && currentDate.getFullYear() === currentYear) {
                                       // Check if this is the ovulation day
                                       if (currentDate.getTime() === futureOvulation.date.getTime()) {
-                                          cell.classList.add('future-ovulation-day');
+                                          cell.classList.add('ovulation-day');
                                       } else {
-                                          cell.classList.add('future-fertile-day');
+                                          cell.classList.add('fertile-day');
                                       }
                                   }
                               }
@@ -707,6 +1128,117 @@
 
       // Initialize calendar
       generateCalendar();
+
+      // Initialize text-to-speech functionality
+      function setupOvulationTextToSpeech() {
+          const voiceBtn = document.getElementById('voice-ovulation-btn');
+          
+          if ('speechSynthesis' in window) {
+              voiceBtn.addEventListener('click', function() {
+                  const lastPeriod = new Date(lastPeriodInput.value);
+                  const cycleLength = parseInt(cycleLengthSelect.value);
+                  const nextPeriod = new Date(lastPeriod);
+                  nextPeriod.setDate(nextPeriod.getDate() + cycleLength);
+                  const ovulationDate = new Date(nextPeriod);
+                  ovulationDate.setDate(ovulationDate.getDate() - 14);
+                  const fertileStart = new Date(ovulationDate);
+                  fertileStart.setDate(fertileStart.getDate() - 5);
+                  const fertileEnd = new Date(ovulationDate);
+                  fertileEnd.setDate(fertileEnd.getDate() + 1);
+                  
+                  const speechText = `
+                      Jinin al'ada zata iya dawowa a ranar ${formatDate(nextPeriod)}. 
+                      Ranar ovulation ita ce ${formatDate(ovulationDate)}. 
+                      Lokutan daukar ciki suna tsakanin ${formatDate(fertileStart)} zuwa ${formatDate(fertileEnd)}. 
+                      Mafi kyawun lokaci don yin jima'i shine kwana 3 kafin ovulation.
+                  `;
+                  
+                  const utterance = new SpeechSynthesisUtterance(speechText);
+                  utterance.rate = 0.9;
+                  utterance.pitch = 1;
+                  
+                  // Toggle speech on/off
+                  if (speechSynthesis.speaking) {
+                      speechSynthesis.cancel();
+                      voiceBtn.innerHTML = '<i class="fas fa-volume-up"></i> Saurara';
+                      return;
+                  }
+                  
+                  voiceBtn.innerHTML = '<i class="fas fa-stop"></i> Tsaya';
+                  
+                  utterance.onend = function() {
+                      voiceBtn.innerHTML = '<i class="fas fa-volume-up"></i> Saurara';
+                  };
+                  
+                  speechSynthesis.speak(utterance);
+              });
+          } else {
+              document.getElementById('voice-ovulation-btn').style.display = 'none';
+          }
+      }
+
+      // Initialize sharing functionality
+      function setupOvulationSharing() {
+          const shareBtn = document.getElementById('share-ovulation-btn');
+          
+          shareBtn.addEventListener('click', function() {
+              const lastPeriod = new Date(lastPeriodInput.value);
+              const cycleLength = parseInt(cycleLengthSelect.value);
+              const nextPeriod = new Date(lastPeriod);
+              nextPeriod.setDate(nextPeriod.getDate() + cycleLength);
+              const ovulationDate = new Date(nextPeriod);
+              ovulationDate.setDate(ovulationDate.getDate() - 14);
+              const fertileStart = new Date(ovulationDate);
+              fertileStart.setDate(fertileStart.getDate() - 5);
+              const fertileEnd = new Date(ovulationDate);
+              fertileEnd.setDate(fertileEnd.getDate() + 1);
+              
+              const shareData = {
+                  title: 'Sakamakon Kalkuletar Ovulation Na',
+                  text: `Jinin al'ada zata iya dawowa a ranar ${formatDate(nextPeriod)}. Ranar ovulation ita ce ${formatDate(ovulationDate)}. Lokutan daukar ciki suna tsakanin ${formatDate(fertileStart)} zuwa ${formatDate(fertileEnd)}.`,
+                  url: window.location.href
+              };
+              
+              if (navigator.share) {
+                  navigator.share(shareData)
+                      .catch(err => console.log('Error sharing:', err));
+              } else {
+                  // Fallback for browsers without Web Share API
+                  const text = encodeURIComponent(shareData.text);
+                  const url = encodeURIComponent(shareData.url);
+                  
+                  // Create a share menu with multiple options
+                  const shareMenu = document.createElement('div');
+                  shareMenu.className = 'share-menu';
+                  shareMenu.innerHTML = `
+                      <p>Raba ta:</p>
+                      <a href="https://wa.me/?text=${text}" target="_blank">WhatsApp</a>
+                      <a href="mailto:?subject=${encodeURIComponent(shareData.title)}&body=${text}" target="_blank">Imel</a>
+                      <button class="copy-link">Kwafi Hanyar Haɗi</button>
+                      <button class="cancel-share">Soke</button>
+                  `;
+                  
+                  document.body.appendChild(shareMenu);
+                  
+                  // Handle copy link
+                  shareMenu.querySelector('.copy-link').addEventListener('click', function() {
+                      navigator.clipboard.writeText(shareData.url)
+                          .then(() => alert('An kwafi hanyar haɗi!'))
+                          .catch(err => console.error('Ba a iya kwafin rubutu: ', err));
+                      shareMenu.remove();
+                  });
+                  
+                  // Handle cancel
+                  shareMenu.querySelector('.cancel-share').addEventListener('click', function() {
+                      shareMenu.remove();
+                  });
+              }
+          });
+      }
+
+      // Initialize interactive features
+      setupOvulationTextToSpeech();
+      setupOvulationSharing();
 
       // Add smooth scrolling to HTML element
       document.documentElement.style.scrollBehavior = 'smooth';
