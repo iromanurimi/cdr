@@ -47,44 +47,6 @@
             font-weight: 600;
         }
 
-        .baby-tracker-actions {
-            display: flex;
-            gap: 10px;
-        }
-
-        .btn-share, .btn-voice {
-            padding: 8px 15px;
-            border: none;
-            border-radius: 30px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.3s ease;
-        }
-
-        .btn-share {
-            background-color: #A2D7D8;
-            color: white;
-        }
-
-        .btn-voice {
-            background-color: #FFD1DC;
-            color: #5E5E5E;
-        }
-
-        .btn-share:hover {
-            background-color: #8bc5c6;
-            transform: translateY(-2px);
-        }
-
-        .btn-voice:hover {
-            background-color: #ffc0d0;
-            transform: translateY(-2px);
-        }
-
         .tracker-cards-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -426,11 +388,6 @@
                 align-items: flex-start;
                 gap: 15px;
             }
-            
-            .baby-tracker-actions {
-                width: 100%;
-                justify-content: flex-end;
-            }
         }
 
         @media (max-width: 480px) {
@@ -596,11 +553,6 @@
         <div class="ovulation-results-container" id="results-container" data-aos="fade-up">
             <div class="baby-tracker-header">
                 <h2>Ga Sakamakon Lissafi</h2>
-                <div class="baby-tracker-actions">
-                    <button id="share-ovulation-btn" class="btn-share">
-                        <i class="fas fa-share-alt"></i> Raba
-                    </button>
-               </div>
             </div>
 
             <div class="tracker-cards-container">
@@ -624,7 +576,14 @@
                     <div class="card-content">
                         <h3>Ranar Zuwan Ovulation</h3>
                         <div class="week-display" id="ovulation-day">May 1, 2024</div>
-                    
+                        <div class="progress-container">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="ovulation-progress" style="width: 60%;"></div>
+                            </div>
+                            <div class="progress-percent" id="ovulation-percent">60% cikakke</div>
+                        </div>
+                        <div class="trimester-info" id="cycle-phase">Kashi na 2 (Lokacin daukar ciki)</div>
+                    </div>
                 </div>
 
                 <!-- Fertile Window Card -->
@@ -1118,117 +1077,6 @@
 
       // Initialize calendar
       generateCalendar();
-
-      // Initialize text-to-speech functionality
-      function setupOvulationTextToSpeech() {
-          const voiceBtn = document.getElementById('voice-ovulation-btn');
-          
-          if ('speechSynthesis' in window) {
-              voiceBtn.addEventListener('click', function() {
-                  const lastPeriod = new Date(lastPeriodInput.value);
-                  const cycleLength = parseInt(cycleLengthSelect.value);
-                  const nextPeriod = new Date(lastPeriod);
-                  nextPeriod.setDate(nextPeriod.getDate() + cycleLength);
-                  const ovulationDate = new Date(nextPeriod);
-                  ovulationDate.setDate(ovulationDate.getDate() - 14);
-                  const fertileStart = new Date(ovulationDate);
-                  fertileStart.setDate(fertileStart.getDate() - 5);
-                  const fertileEnd = new Date(ovulationDate);
-                  fertileEnd.setDate(fertileEnd.getDate() + 1);
-                  
-                  const speechText = `
-                      Jinin al'ada zata iya dawowa a ranar ${formatDate(nextPeriod)}. 
-                      Ranar ovulation ita ce ${formatDate(ovulationDate)}. 
-                      Lokutan daukar ciki suna tsakanin ${formatDate(fertileStart)} zuwa ${formatDate(fertileEnd)}. 
-                      Mafi kyawun lokaci don yin jima'i shine kwana 3 kafin ovulation.
-                  `;
-                  
-                  const utterance = new SpeechSynthesisUtterance(speechText);
-                  utterance.rate = 0.9;
-                  utterance.pitch = 1;
-                  
-                  // Toggle speech on/off
-                  if (speechSynthesis.speaking) {
-                      speechSynthesis.cancel();
-                      voiceBtn.innerHTML = '<i class="fas fa-volume-up"></i> Saurara';
-                      return;
-                  }
-                  
-                  voiceBtn.innerHTML = '<i class="fas fa-stop"></i> Tsaya';
-                  
-                  utterance.onend = function() {
-                      voiceBtn.innerHTML = '<i class="fas fa-volume-up"></i> Saurara';
-                  };
-                  
-                  speechSynthesis.speak(utterance);
-              });
-          } else {
-              document.getElementById('voice-ovulation-btn').style.display = 'none';
-          }
-      }
-
-      // Initialize sharing functionality
-      function setupOvulationSharing() {
-          const shareBtn = document.getElementById('share-ovulation-btn');
-          
-          shareBtn.addEventListener('click', function() {
-              const lastPeriod = new Date(lastPeriodInput.value);
-              const cycleLength = parseInt(cycleLengthSelect.value);
-              const nextPeriod = new Date(lastPeriod);
-              nextPeriod.setDate(nextPeriod.getDate() + cycleLength);
-              const ovulationDate = new Date(nextPeriod);
-              ovulationDate.setDate(ovulationDate.getDate() - 14);
-              const fertileStart = new Date(ovulationDate);
-              fertileStart.setDate(fertileStart.getDate() - 5);
-              const fertileEnd = new Date(ovulationDate);
-              fertileEnd.setDate(fertileEnd.getDate() + 1);
-              
-              const shareData = {
-                  title: 'Sakamakon Kalkuletar Ovulation Na',
-                  text: `Jinin al'ada zata iya dawowa a ranar ${formatDate(nextPeriod)}. Ranar ovulation ita ce ${formatDate(ovulationDate)}. Lokutan daukar ciki suna tsakanin ${formatDate(fertileStart)} zuwa ${formatDate(fertileEnd)}.`,
-                  url: window.location.href
-              };
-              
-              if (navigator.share) {
-                  navigator.share(shareData)
-                      .catch(err => console.log('Error sharing:', err));
-              } else {
-                  // Fallback for browsers without Web Share API
-                  const text = encodeURIComponent(shareData.text);
-                  const url = encodeURIComponent(shareData.url);
-                  
-                  // Create a share menu with multiple options
-                  const shareMenu = document.createElement('div');
-                  shareMenu.className = 'share-menu';
-                  shareMenu.innerHTML = `
-                      <p>Raba ta:</p>
-                      <a href="https://wa.me/?text=${text}" target="_blank">WhatsApp</a>
-                      <a href="mailto:?subject=${encodeURIComponent(shareData.title)}&body=${text}" target="_blank">Imel</a>
-                      <button class="copy-link">Kwafi Hanyar Haɗi</button>
-                      <button class="cancel-share">Soke</button>
-                  `;
-                  
-                  document.body.appendChild(shareMenu);
-                  
-                  // Handle copy link
-                  shareMenu.querySelector('.copy-link').addEventListener('click', function() {
-                      navigator.clipboard.writeText(shareData.url)
-                          .then(() => alert('An kwafi hanyar haɗi!'))
-                          .catch(err => console.error('Ba a iya kwafin rubutu: ', err));
-                      shareMenu.remove();
-                  });
-                  
-                  // Handle cancel
-                  shareMenu.querySelector('.cancel-share').addEventListener('click', function() {
-                      shareMenu.remove();
-                  });
-              }
-          });
-      }
-
-      // Initialize interactive features
-      setupOvulationTextToSpeech();
-      setupOvulationSharing();
 
       // Add smooth scrolling to HTML element
       document.documentElement.style.scrollBehavior = 'smooth';
