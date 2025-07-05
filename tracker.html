@@ -155,20 +155,107 @@
             </div>
         </div>
         
-        <div class="pregnancy-info" id="pregnancy-info" style="display: none;" data-aos="fade-up">
-            <h2 id="week-title">Mako na 12: Jariri girman plum ne</h2>
-            <p id="due-date-info">Ranar Haihuwa: 5 Janairu, 2025 (kwanaki 84 da suka rage)</p>
-            
-            <div class="progress-container">
-                <h3>Ci gaban Ciki</h3>
-                <div class="trimester-progress">
-                    <div class="trimester trimester-1 active-trimester">1st</div>
-                    <div class="trimester trimester-2"> 2nd</div>
-                    <div class="trimester trimester-3">3rd</div>
-                </div>
-                <p id="trimester-info"> Yanzu ana cikin zango (Trimester) ta farko  - makonni 1-12 </p>
+        <div class="baby-tracker-container" id="pregnancy-info" style="display: none;">
+    <div class="baby-tracker-header">
+        <h2>Your Pregnancy Journey</h2>
+        <div class="baby-tracker-actions">
+            <button id="share-btn" class="btn-share">
+                <i class="fas fa-share-alt"></i> Share
+            </button>
+            <button id="voice-btn" class="btn-voice">
+                <i class="fas fa-volume-up"></i> Listen
+            </button>
+        </div>
+    </div>
+
+    <div class="tracker-cards-container">
+        <!-- Due Date Card -->
+        <div class="tracker-card due-date-card">
+            <div class="card-icon">
+                <i class="fas fa-calendar-alt"></i>
+            </div>
+            <div class="card-content">
+                <h3>Estimated Due Date</h3>
+                <div class="due-date" id="due-date-display">January 5, 2025</div>
+                <div class="countdown" id="days-remaining">84 days remaining</div>
             </div>
         </div>
+
+        <!-- Progress Card -->
+        <div class="tracker-card progress-card">
+            <div class="card-icon">
+                <i class="fas fa-chart-line"></i>
+            </div>
+            <div class="card-content">
+                <h3>Your Progress</h3>
+                <div class="week-display" id="current-week">Week 24, Day 3</div>
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill" style="width: 60%;"></div>
+                    </div>
+                    <div class="progress-percent" id="progress-percent">60% complete</div>
+                </div>
+                <div class="trimester-info" id="trimester-info">2nd Trimester (Weeks 14-27)</div>
+            </div>
+        </div>
+
+        <!-- Baby Development Card -->
+        <div class="tracker-card baby-dev-card">
+            <div class="card-icon">
+                <i class="fas fa-baby"></i>
+            </div>
+            <div class="card-content">
+                <h3>Baby's Development</h3>
+                <div class="baby-size" id="baby-size">
+                    <div class="size-comparison">Size of a mango</div>
+                    <div class="size-image">
+                        <img src="https://via.placeholder.com/100x100?text=Mango" alt="Baby size comparison" id="baby-size-image">
+                    </div>
+                </div>
+                <div class="baby-milestones" id="baby-milestones">
+                    <ul>
+                        <li>Eyes are beginning to open</li>
+                        <li>Developing taste buds</li>
+                        <li>Practicing breathing movements</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Health Tips Card -->
+        <div class="tracker-card health-tips-card">
+            <div class="card-icon">
+                <i class="fas fa-heartbeat"></i>
+            </div>
+            <div class="card-content">
+                <h3>This Week's Tips</h3>
+                <div class="health-tip" id="health-tip">
+                    <p>Increase your iron intake with leafy greens and lean meats to support baby's growth and prevent anemia.</p>
+                </div>
+                <div class="reminder" id="reminder">
+                    <i class="fas fa-bell"></i> Don't forget your prenatal checkup this week!
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Visual Progress -->
+    <div class="visual-progress-container">
+        <div class="circular-progress">
+            <svg class="progress-ring" width="120" height="120">
+                <circle class="progress-ring-circle" stroke="#A2D7D8" stroke-width="8" fill="transparent" r="52" cx="60" cy="60"/>
+                <circle class="progress-ring-circle progress-ring-fill" stroke="#FF9AA2" stroke-width="8" stroke-dasharray="326.56" stroke-dashoffset="130.624" fill="transparent" r="52" cx="60" cy="60"/>
+            </svg>
+            <div class="progress-text" id="circular-progress-text">60%</div>
+        </div>
+        <div class="pregnancy-timeline">
+            <div class="timeline-marker" style="left: 60%;">
+                <div class="marker-dot"></div>
+                <div class="marker-label">Week 24</div>
+            </div>
+        </div>
+    </div>
+</div>
     </section>
     
     <!-- Fetal Development Timeline -->
@@ -636,181 +723,413 @@
     <!-- JavaScript -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        // Initialize AOS
-        AOS.init({
-            duration: 800,
-            offset: 100,
-        });
-
-        
-  document.addEventListener('DOMContentLoaded', function () {
-    const navItems = document.querySelectorAll('.bottom-nav .nav-item');
-    const currentPage = window.location.pathname.split('/').pop();
-
-    navItems.forEach(link => {
-      const linkPage = link.getAttribute('href');
-      if (linkPage === currentPage) {
-        link.classList.add('active');
-      }
+      <!-- JavaScript -->
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+    // Initialize AOS
+    AOS.init({
+        duration: 800,
+        offset: 100,
     });
-  });
 
+    document.addEventListener('DOMContentLoaded', function () {
+        const navItems = document.querySelectorAll('.bottom-nav .nav-item');
+        const currentPage = window.location.pathname.split('/').pop();
 
-
-        // Mobile Menu Toggle
-        const hamburger = document.getElementById('hamburger');
-        const closeMenu = document.getElementById('close-menu');
-        const mobileMenuContainer = document.getElementById('mobile-menu-container');
-        const overlay = document.getElementById('overlay');
-        
-        hamburger.addEventListener('click', function() {
-            mobileMenuContainer.classList.add('open');
-            overlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        });
-        
-        closeMenu.addEventListener('click', function() {
-            mobileMenuContainer.classList.remove('open');
-            overlay.classList.remove('active');
-            document.body.style.overflow = '';
-        });
-        
-        overlay.addEventListener('click', function() {
-            mobileMenuContainer.classList.remove('open');
-            overlay.classList.remove('active');
-            document.body.style.overflow = '';
-        });
-        
-        // Close menu when clicking on a link
-        document.querySelectorAll('.mobile-menu a').forEach(link => {
-            link.addEventListener('click', function() {
-                mobileMenuContainer.classList.remove('open');
-                overlay.classList.remove('active');
-                document.body.style.overflow = '';
-            });
-        });
-        
-        // Set current year in footer
-        document.getElementById('year').textContent = new Date().getFullYear();
-        
-        // Toggle calculation method
-        document.getElementById('calculation-method').addEventListener('change', function() {
-            if (this.value === 'lmp') {
-                document.getElementById('lmp-input').style.display = 'block';
-                document.getElementById('ed-input').style.display = 'none';
-            } else {
-                document.getElementById('lmp-input').style.display = 'none';
-                document.getElementById('ed-input').style.display = 'block';
+        navItems.forEach(link => {
+            const linkPage = link.getAttribute('href');
+            if (linkPage === currentPage) {
+                link.classList.add('active');
             }
         });
+    });
+
+    // Mobile Menu Toggle
+    const hamburger = document.getElementById('hamburger');
+    const closeMenu = document.getElementById('close-menu');
+    const mobileMenuContainer = document.getElementById('mobile-menu-container');
+    const overlay = document.getElementById('overlay');
+    
+    hamburger.addEventListener('click', function() {
+        mobileMenuContainer.classList.add('open');
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    });
+    
+    closeMenu.addEventListener('click', function() {
+        mobileMenuContainer.classList.remove('open');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+    
+    overlay.addEventListener('click', function() {
+        mobileMenuContainer.classList.remove('open');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+    
+    // Close menu when clicking on a link
+    document.querySelectorAll('.mobile-menu a').forEach(link => {
+        link.addEventListener('click', function() {
+            mobileMenuContainer.classList.remove('open');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    });
+    
+    // Set current year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+    
+    // Toggle calculation method
+    document.getElementById('calculation-method').addEventListener('change', function() {
+        if (this.value === 'lmp') {
+            document.getElementById('lmp-input').style.display = 'block';
+            document.getElementById('ed-input').style.display = 'none';
+        } else {
+            document.getElementById('lmp-input').style.display = 'none';
+            document.getElementById('ed-input').style.display = 'block';
+        }
+    });
+    
+    // Baby Development Data (for all 40 weeks)
+    const babyDevelopmentData = {
+        4: { size: "Poppy seed", sizeImage: "https://via.placeholder.com/50x50?text=Poppy", milestones: ["Neural tube forms", "Heart begins to beat"] },
+        5: { size: "Sesame seed", sizeImage: "https://via.placeholder.com/50x50?text=Sesame", milestones: ["Arm and leg buds appear", "Brain divides into 5 parts"] },
+        // ... (weeks 6-11 data)
+        12: { size: "Plum", sizeImage: "https://via.placeholder.com/50x50?text=Plum", milestones: ["All organs formed", "Fingers and toes visible"] },
+        13: { size: "Peach", sizeImage: "https://via.placeholder.com/50x50?text=Peach", milestones: ["Vocal cords develop", "Fingerprints form"] },
+        // ... (weeks 14-23 data)
+        24: { 
+            size: "Mango", 
+            sizeImage: "https://via.placeholder.com/50x50?text=Mango",
+            milestones: [
+                "Eyes are beginning to open",
+                "Developing taste buds",
+                "Practicing breathing movements"
+            ],
+            healthTips: [
+                "Increase your iron intake with leafy greens and lean meats",
+                "Sleep on your side for better circulation"
+            ],
+            reminder: "Don't forget your prenatal checkup this week!"
+        },
+        // ... (weeks 25-39 data)
+        40: { size: "Watermelon", sizeImage: "https://via.placeholder.com/50x50?text=Melon", milestones: ["Full-term baby", "Ready for birth!"] }
+    };
+
+    // Calculate comprehensive pregnancy progress
+    function calculatePregnancyProgress(dueDate, currentDate = new Date()) {
+        const totalDays = 280; // 40 weeks * 7 days
+        const conceptionDate = new Date(dueDate);
+        conceptionDate.setDate(conceptionDate.getDate() - totalDays);
         
-        // Calculate due date
-        document.getElementById('calculate-btn').addEventListener('click', function() {
-            const method = document.getElementById('calculation-method').value;
-            let dueDate, lastPeriod;
-            
-            if (method === 'lmp') {
+        const daysPassed = Math.floor((currentDate - conceptionDate) / (1000 * 60 * 60 * 24));
+        const daysRemaining = Math.floor((dueDate - currentDate) / (1000 * 60 * 60 * 24));
+        
+        const weeks = Math.min(40, Math.floor(daysPassed / 7));
+        const days = daysPassed % 7;
+        const percentComplete = Math.min(100, Math.round((daysPassed / totalDays) * 100));
+        
+        let trimester;
+        if (weeks < 14) {
+            trimester = 'first';
+        } else if (weeks < 28) {
+            trimester = 'second';
+        } else {
+            trimester = 'third';
+        }
+        
+        return {
+            weeks,
+            days,
+            percentComplete,
+            daysRemaining,
+            trimester,
+            conceptionDate,
+            currentDate
+        };
+    }
+
+    // Update all pregnancy info displays with new design
+    function updatePregnancyInfo(dueDate) {
+        const progress = calculatePregnancyProgress(dueDate);
+        const weekData = babyDevelopmentData[progress.weeks] || {
+            size: getFruitSize(progress.weeks),
+            milestones: ["Development information not available"],
+            healthTips: ["Continue with regular prenatal care"],
+            reminder: "Check with your healthcare provider"
+        };
+
+        // Update Due Date Card
+        document.getElementById('due-date-display').textContent = 
+            formatDate(dueDate);
+        document.getElementById('days-remaining').textContent = 
+            `${progress.daysRemaining} days remaining`;
+
+        // Update Progress Card
+        document.getElementById('current-week').textContent = 
+            `Week ${progress.weeks}, Day ${progress.days}`;
+        document.getElementById('progress-fill').style.width = 
+            `${progress.percentComplete}%`;
+        document.getElementById('progress-percent').textContent = 
+            `${progress.percentComplete}% complete`;
+        document.getElementById('trimester-info').textContent = 
+            `${progress.trimester} trimester (${progress.trimester === 'first' ? 'Weeks 1-13' : 
+              progress.trimester === 'second' ? 'Weeks 14-27' : 'Weeks 28-40'})`;
+
+        // Update Circular Progress
+        const circumference = 2 * Math.PI * 52;
+        const offset = circumference - (progress.percentComplete / 100) * circumference;
+        document.querySelector('.progress-ring-fill').style.strokeDashoffset = offset;
+        document.getElementById('circular-progress-text').textContent = 
+            `${progress.percentComplete}%`;
+
+        // Update Baby Development Card
+        document.querySelector('.size-comparison').textContent = 
+            `Size of a ${weekData.size}`;
+        if (weekData.sizeImage) {
+            document.getElementById('baby-size-image').src = weekData.sizeImage;
+        }
+        document.getElementById('baby-size-image').alt = 
+            `Baby size comparison: ${weekData.size}`;
+        
+        const milestonesList = document.getElementById('baby-milestones').querySelector('ul');
+        milestonesList.innerHTML = '';
+        weekData.milestones.forEach(milestone => {
+            const li = document.createElement('li');
+            li.textContent = milestone;
+            milestonesList.appendChild(li);
+        });
+
+        // Update Health Tips Card
+        const healthTipElement = document.getElementById('health-tip');
+        if (weekData.healthTips) {
+            healthTipElement.querySelector('p').textContent = typeof weekData.healthTips === 'string' ? 
+                weekData.healthTips : weekData.healthTips.join(' ');
+            healthTipElement.style.display = 'block';
+        } else {
+            healthTipElement.style.display = 'none';
+        }
+        
+        const reminderElement = document.getElementById('reminder');
+        if (weekData.reminder) {
+            reminderElement.innerHTML = `<i class="fas fa-bell"></i> ${weekData.reminder}`;
+            reminderElement.style.display = 'flex';
+        } else {
+            reminderElement.style.display = 'none';
+        }
+
+        // Update Timeline Marker
+        document.querySelector('.timeline-marker').style.left = 
+            `${progress.percentComplete}%`;
+        document.querySelector('.marker-label').textContent = 
+            `Week ${progress.weeks}`;
+
+        // Highlight active trimester
+        document.querySelectorAll('.trimester').forEach(el => el.classList.remove('active-trimester'));
+        document.querySelector(`.trimester-${progress.trimester === 'first' ? '1' : 
+                             progress.trimester === 'second' ? '2' : '3'}`).classList.add('active-trimester');
+    }
+
+    // Initialize text-to-speech functionality
+    function setupTextToSpeech() {
+        const voiceBtn = document.getElementById('voice-btn');
+        
+        if ('speechSynthesis' in window) {
+            voiceBtn.addEventListener('click', function() {
                 const lmp = new Date(document.getElementById('last-period').value);
-                if (isNaN(lmp.getTime())) {
-                    alert('Please enter a valid last menstrual period date');
+                const dueDate = calculateDueDate(lmp);
+                const progress = calculatePregnancyProgress(dueDate);
+                const weekData = babyDevelopmentData[progress.weeks] || {
+                    size: getFruitSize(progress.weeks),
+                    milestones: ["Development information not available"],
+                    healthTips: ["Continue with regular prenatal care"],
+                    reminder: "Check with your healthcare provider"
+                };
+                
+                const speechText = `
+                    You are currently in week ${progress.weeks} of your pregnancy. 
+                    Your baby is about the size of a ${weekData.size}. 
+                    ${weekData.milestones.join(' ')} 
+                    ${weekData.healthTips ? 'Health tip: ' + (typeof weekData.healthTips === 'string' ? 
+                      weekData.healthTips : weekData.healthTips.join(' ')) : ''} 
+                    ${weekData.reminder ? 'Reminder: ' + weekData.reminder : ''}
+                `;
+                
+                const utterance = new SpeechSynthesisUtterance(speechText);
+                utterance.rate = 0.9;
+                utterance.pitch = 1;
+                
+                // Toggle speech on/off
+                if (speechSynthesis.speaking) {
+                    speechSynthesis.cancel();
+                    voiceBtn.innerHTML = '<i class="fas fa-volume-up"></i> Listen';
                     return;
                 }
                 
-                // Calculate due date (LMP + 280 days)
-                dueDate = new Date(lmp);
-                dueDate.setDate(dueDate.getDate() + 280);
-                lastPeriod = lmp;
-            } else {
-                dueDate = new Date(document.getElementById('due-date').value);
-                if (isNaN(dueDate.getTime())) {
-                    alert('Please enter a valid due date');
-                    return;
-                }
+                voiceBtn.innerHTML = '<i class="fas fa-stop"></i> Stop';
                 
-                // Calculate LMP (due date - 280 days)
-                lastPeriod = new Date(dueDate);
-                lastPeriod.setDate(lastPeriod.getDate() - 280);
-            }
-            
-            // Calculate current week of pregnancy
-            const today = new Date();
-            const daysPassed = Math.floor((today - lastPeriod) / (1000 * 60 * 60 * 24));
-            const weeks = Math.floor(daysPassed / 7);
-            const daysLeft = Math.floor((dueDate - today) / (1000 * 60 * 60 * 24));
-            
-            // Update UI
-            document.getElementById('week-title').textContent = `Week ${weeks}: Baby is the size of a ${getFruitSize(weeks)}`;
-            document.getElementById('due-date-info').textContent = `Due: ${formatDate(dueDate)} (${daysLeft} days left)`;
-            
-            // Update trimester info
-            let trimester;
-            if (weeks < 13) {
-                trimester = 'first';
-            } else if (weeks < 27) {
-                trimester = 'second';
-            } else {
-                trimester = 'third';
-            }
-            
-            document.getElementById('trimester-info').textContent = `You're in your ${trimester} trimester`;
-            
-            // Highlight active trimester
-            document.querySelectorAll('.trimester').forEach(el => el.classList.remove('active-trimester'));
-            document.querySelector(`.trimester-${trimester === 'first' ? '1' : trimester === 'second' ? '2' : '3'}`).classList.add('active-trimester');
-            
-            // Show results
-            document.getElementById('pregnancy-info').style.display = 'block';
-            
-            // Scroll to pregnancy info
-            document.getElementById('pregnancy-info').scrollIntoView({ behavior: 'smooth' });
-        });
-        
-        // Reset calculator
-        document.getElementById('reset-btn').addEventListener('click', function() {
-            document.getElementById('last-period').value = '';
-            document.getElementById('due-date').value = '';
-            document.getElementById('pregnancy-info').style.display = 'none';
-        });
-        
-        // Toggle week cards
-        function toggleWeek(header) {
-            const content = header.nextElementSibling;
-            const icon = header.querySelector('i');
-            
-            // Toggle the active class
-            content.classList.toggle('active');
-            
-            // Toggle the icon
-            if (content.classList.contains('active')) {
-                icon.classList.remove('fa-chevron-down');
-                icon.classList.add('fa-chevron-up');
-            } else {
-                icon.classList.remove('fa-chevron-up');
-                icon.classList.add('fa-chevron-down');
-            }
+                utterance.onend = function() {
+                    voiceBtn.innerHTML = '<i class="fas fa-volume-up"></i> Listen';
+                };
+                
+                speechSynthesis.speak(utterance);
+            });
+        } else {
+            document.getElementById('voice-btn').style.display = 'none';
         }
+    }
+
+    // Initialize sharing functionality
+    function setupSharing() {
+        const shareBtn = document.getElementById('share-btn');
         
-        // Format date as "Month Day, Year"
-        function formatDate(date) {
-            return date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
-        }
-        
-        // Get fruit/vegetable size comparison for week
-        function getFruitSize(week) {
-            const sizes = {
-                4: 'poppy seed', 5: 'sesame seed', 6: 'lentil', 7: 'blueberry', 
-                8: 'raspberry', 9: 'cherry', 10: 'strawberry', 11: 'lime', 
-                12: 'plum', 13: 'peach', 14: 'lemon', 15: 'apple', 
-                16: 'avocado', 17: 'pear', 18: 'bell pepper', 19: 'tomato', 
-                20: 'banana', 21: 'carrot', 22: 'spaghetti squash', 23: 'grapefruit',
-                24: 'corn', 25: 'rutabaga', 26: 'scallion', 27: 'cauliflower',
-                28: 'eggplant', 29: 'butternut squash', 30: 'cabbage', 31: 'coconut',
-                32: 'jicama', 33: 'pineapple', 34: 'melon', 35: 'honeydew',
-                36: 'romaine lettuce', 37: 'swiss chard', 38: 'leek', 39: 'mini watermelon',
-                40: 'pumpkin'
+        shareBtn.addEventListener('click', function() {
+            const lmp = new Date(document.getElementById('last-period').value);
+            const dueDate = calculateDueDate(lmp);
+            const progress = calculatePregnancyProgress(dueDate);
+            
+            const shareData = {
+                title: 'My Pregnancy Progress',
+                text: `I'm ${progress.weeks} weeks pregnant! Baby is due on ${formatDate(dueDate)}.`,
+                url: window.location.href
             };
-            return sizes[week] || 'watermelon';
+            
+            if (navigator.share) {
+                navigator.share(shareData)
+                    .catch(err => console.log('Error sharing:', err));
+            } else {
+                // Fallback for browsers without Web Share API
+                const text = encodeURIComponent(shareData.text);
+                const url = encodeURIComponent(shareData.url);
+                
+                // Create a share menu with multiple options
+                const shareMenu = document.createElement('div');
+                shareMenu.className = 'share-menu';
+                shareMenu.innerHTML = `
+                    <p>Share via:</p>
+                    <a href="https://wa.me/?text=${text}" target="_blank">WhatsApp</a>
+                    <a href="mailto:?subject=${encodeURIComponent(shareData.title)}&body=${text}" target="_blank">Email</a>
+                    <button class="copy-link">Copy Link</button>
+                    <button class="cancel-share">Cancel</button>
+                `;
+                
+                document.body.appendChild(shareMenu);
+                
+                // Handle copy link
+                shareMenu.querySelector('.copy-link').addEventListener('click', function() {
+                    navigator.clipboard.writeText(shareData.url)
+                        .then(() => alert('Link copied to clipboard!'))
+                        .catch(err => console.error('Could not copy text: ', err));
+                    shareMenu.remove();
+                });
+                
+                // Handle cancel
+                shareMenu.querySelector('.cancel-share').addEventListener('click', function() {
+                    shareMenu.remove();
+                });
+            }
+        });
+    }
+
+    // Calculate due date based on last menstrual period (LMP)
+    function calculateDueDate(lmpDate) {
+        // Naegele's rule: Add 1 year, subtract 3 months, add 7 days
+        const dueDate = new Date(lmpDate);
+        dueDate.setDate(dueDate.getDate() + 280); // 40 weeks * 7 days
+        return dueDate;
+    }
+
+    // Format date as "Month Day, Year"
+    function formatDate(date) {
+        return date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+    }
+
+    // Get fruit/vegetable size comparison for week
+    function getFruitSize(week) {
+        const sizes = {
+            4: 'poppy seed', 5: 'sesame seed', 6: 'lentil', 7: 'blueberry', 
+            8: 'raspberry', 9: 'cherry', 10: 'strawberry', 11: 'lime', 
+            12: 'plum', 13: 'peach', 14: 'lemon', 15: 'apple', 
+            16: 'avocado', 17: 'pear', 18: 'bell pepper', 19: 'tomato', 
+            20: 'banana', 21: 'carrot', 22: 'spaghetti squash', 23: 'grapefruit',
+            24: 'corn', 25: 'rutabaga', 26: 'scallion', 27: 'cauliflower',
+            28: 'eggplant', 29: 'butternut squash', 30: 'cabbage', 31: 'coconut',
+            32: 'jicama', 33: 'pineapple', 34: 'melon', 35: 'honeydew',
+            36: 'romaine lettuce', 37: 'swiss chard', 38: 'leek', 39: 'mini watermelon',
+            40: 'pumpkin'
+        };
+        return sizes[week] || 'watermelon';
+    }
+
+    // Calculate due date - main function
+    document.getElementById('calculate-btn').addEventListener('click', function() {
+        const method = document.getElementById('calculation-method').value;
+        let dueDate, lastPeriod;
+        
+        if (method === 'lmp') {
+            const lmp = new Date(document.getElementById('last-period').value);
+            if (isNaN(lmp.getTime())) {
+                alert('Please enter a valid last menstrual period date');
+                return;
+            }
+            
+            dueDate = calculateDueDate(lmp);
+            lastPeriod = lmp;
+        } else {
+            dueDate = new Date(document.getElementById('due-date').value);
+            if (isNaN(dueDate.getTime())) {
+                alert('Please enter a valid due date');
+                return;
+            }
+            
+            lastPeriod = new Date(dueDate);
+            lastPeriod.setDate(lastPeriod.getDate() - 280);
         }
+        
+        // Update UI with new design
+        updatePregnancyInfo(dueDate);
+        
+        // Show results
+        document.getElementById('pregnancy-info').style.display = 'block';
+        
+        // Initialize interactive features
+        setupTextToSpeech();
+        setupSharing();
+        
+        // Add animation to progress fill
+        const progressFill = document.getElementById('progress-fill');
+        setTimeout(() => {
+            progressFill.style.transition = 'width 1s ease';
+        }, 100);
+        
+        // Scroll to pregnancy info
+        document.getElementById('pregnancy-info').scrollIntoView({ behavior: 'smooth' });
+    });
+    
+    // Reset calculator
+    document.getElementById('reset-btn').addEventListener('click', function() {
+        document.getElementById('last-period').value = '';
+        document.getElementById('due-date').value = '';
+        document.getElementById('pregnancy-info').style.display = 'none';
+    });
+
+    // Toggle week cards (for timeline section if you have one)
+    function toggleWeek(header) {
+        const content = header.nextElementSibling;
+        const icon = header.querySelector('i');
+        
+        content.classList.toggle('active');
+        
+        if (content.classList.contains('active')) {
+            icon.classList.remove('fa-chevron-down');
+            icon.classList.add('fa-chevron-up');
+        } else {
+            icon.classList.remove('fa-chevron-up');
+            icon.classList.add('fa-chevron-down');
+        }
+    }
+</script>
     </script>
 </body>
 </html>
