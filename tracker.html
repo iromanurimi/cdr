@@ -8,8 +8,466 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-     <link rel="stylesheet" href="css/style.css">   
+     <link rel="stylesheet" href="css/style.csss">   
     <style>
+/* ********************************** Global Styles ****************************************** */
+:root {
+   --primary: #8E6C88;       /* Sophisticated mauve */
+    --primary-light: #B59EB1; /* Lighter mauve */
+    --secondary: #6B8E8E;     /* Muted teal */
+    --accent: #E75480;       /* Vibrant pink for CTAs */
+    --background: #FAF9F7;    /* Warm off-white */
+    --text: #333333;         /* Dark gray for readability */
+    --text-light: #6D6D6D;    /* Secondary text */
+    --surface: #FFFFFF;       /* Card backgrounds */
+    --border: rgba(0, 0, 0, 0.08); /* Subtle borders */
+    --success: #4CAF50;       /* For positive indicators */
+    
+    /* Effects */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1)
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--light-bg);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+/* ********************************** Standardized Navigation ****************************************** */
+.navbar {
+    background-color:white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover img {
+    transform: scale(1.05);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 500;
+    font-size: 1rem;
+    padding: 0.5rem 0;
+    position: relative;
+    transition: color 0.3s;
+}
+
+.nav-links li a:hover {
+    color: var(--primary);
+}
+
+.nav-links li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary);
+    transition: width 0.3s;
+}
+
+.nav-links li a:hover::after {
+    width: 100%;
+}
+
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text);
+}
+
+/* Mobile Menu */
+.mobile-menu-container {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 90%;
+    height: 100%;
+    background: white;
+    z-index: 1000;
+    transition: right 0.3s ease;
+}
+
+.mobile-menu-container.open {
+    right: 0;
+}
+
+.mobile-menu-header {
+    display: flex;
+    justify-content: flex-end;
+    padding: 1rem;
+}
+
+.close-menu {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--primary);
+    cursor: pointer;
+}
+
+.mobile-menu {
+    display: flex;
+    flex-direction: column;
+    padding: 0.3rem 0;
+}
+
+.mobile-menu a {
+    padding: 1rem 1.5rem;
+    text-decoration: none;
+    color: var(--text);
+    font-size: 1.1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    transition: all 0.3s;
+}
+
+.mobile-menu a:hover {
+    background-color: rgba(139, 95, 191, 0.1);
+    color: var(--primary);
+    padding-left: 2rem;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: none;
+}
+
+.overlay.active {
+    display: block;
+}
+
+/* Bottom Nav Inside Mobile Menu - 3 columns */
+.mobile-menu .bottom-nav {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    background: transparent;
+    box-shadow: none;
+    margin-top: 20px;
+    padding: 10px 0;
+    border-top: 1px solid #eee;
+    width: 100%;
+}
+
+.mobile-menu .nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 8px 5px;
+    color: #555;
+    text-decoration: none;
+    font-size: 12px;
+    text-align: center;
+}
+
+.mobile-menu .nav-item i {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.mobile-menu .nav-item.active {
+    color: var(--primary);
+}
+
+/* Remove the old bottom-nav styles */
+.bottom-nav {
+    display: none;
+}
+
+/* Adjust mobile menu container for better scrolling */
+.mobile-menu {
+    max-height: 80vh;
+    overflow-y: auto;
+    padding-bottom: 20px;
+}
+
+/* ********************************** Button Styles ****************************************** */
+.btn {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #7a4da8;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: var(--secondary);
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #4d9ca3;
+    transform: translateY(-2px);
+}
+
+/* ********************************** Footer ****************************************** */
+.footer {
+    background-color: var(--white);
+    padding: 3rem 2rem;
+    margin-top: 3rem;
+    text-align: center;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.social-links {
+    margin: 1rem 0;
+}
+
+.social-links a {
+    color: var(--text);
+    margin: 0 0.5rem;
+    font-size: 1.2rem;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: var(--primary);
+}
+
+.copyright {
+    margin-top: 2rem;
+    color: #999;
+    font-size: 0.9rem;
+}
+
+/* ********************************** Responsive Design ****************************************** */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+    
+    .hamburger {
+        display: block;
+    }
+    
+    .logo {
+        font-size: 1.1rem;
+    }
+    
+    .logo img {
+        width: 37px;
+        height: 37px;
+    }
+    
+    .mobile-menu a {
+        font-size: 1rem;
+    }
+}
+
+/* Articles Section */
+.articles {
+    padding: 3rem 2rem;
+    background-color: rgba(139, 95, 191, 0.05);
+}
+
+.articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.article-card {
+    background-color: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s;
+}
+
+.article-card:hover {
+    transform: translateY(-5px);
+}
+
+.article-img {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+}
+
+.article-content {
+    padding: 1.5rem;
+}
+
+.article-content h3 {
+    margin-bottom: 0.5rem;
+    color: var(--primary);
+}
+
+.read-more {
+    color: var(--primary);
+    font-weight: 500;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.read-more i {
+    margin-left: 0.3rem;
+    transition: transform 0.3s;
+}
+
+.read-more:hover i {
+    transform: translateX(3px);
+}
+
+/* Section Title */
+.section-title {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: var(--primary);
+}
+
+/* Calculator Section */
+.calculator-section {
+    padding: 3rem 2rem;
+    background: linear-gradient(rgba(139, 95, 191, 0.1), rgba(248, 249, 250, 0.9));
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+}
+
+.calculator-card {
+    background-color: white;
+    border-radius: 15px;
+    padding: 2rem;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.input-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.input-group input, .input-group select {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.button-group {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+/* Hospital Hero */
+.hospital-hero {
+    background: linear-gradient(rgba(139, 95, 191, 0.1), rgba(248, 249, 250, 0.9));
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    padding: 5rem 2rem;
+    color: var(--text);
+}
+
+.hospital-hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary);
+}
+
+.hospital-hero p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Dashboard */
+.dashboard {
+    padding: 3rem 2rem;
+    background: linear-gradient(rgba(139, 95, 191, 0.1), rgba(248, 249, 250, 0.9));
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
         /* Baby Tracker Styles */
         .baby-tracker-container {
             background-color: #fff;
@@ -17,7 +475,7 @@
             padding: 25px;
             margin: 20px auto;
             max-width: 900px;
-            box-shadow: 0 10px 30px rgba(162, 215, 216, 0.2);
+            box-shadow: 0 10px 30px rgba(95, 176, 183, 0.2);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
@@ -31,7 +489,7 @@
         }
 
         .baby-tracker-header h2 {
-            color: #5E5E5E;
+            color: var(--primary);
             font-size: 1.8rem;
             margin: 0;
             font-weight: 600;
@@ -56,22 +514,22 @@
         }
 
         .btn-share {
-            background-color: #A2D7D8;
+            background-color: var(--secondary);
             color: white;
         }
 
         .btn-voice {
-            background-color: #FFD1DC;
-            color: #5E5E5E;
+            background-color: rgba(139, 95, 191, 0.1);
+            color: var(--primary);
         }
 
         .btn-share:hover {
-            background-color: #8bc5c6;
+            background-color: #4d9ca3;
             transform: translateY(-2px);
         }
 
         .btn-voice:hover {
-            background-color: #ffc0d0;
+            background-color: rgba(139, 95, 191, 0.2);
             transform: translateY(-2px);
         }
 
@@ -94,7 +552,7 @@
 
         .tracker-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(162, 215, 216, 0.3);
+            box-shadow: 0 8px 25px rgba(95, 176, 183, 0.3);
         }
 
         .card-icon {
@@ -109,27 +567,27 @@
         }
 
         .due-date-card .card-icon {
-            background-color: rgba(255, 154, 162, 0.2);
-            color: #FF9AA2;
+            background-color: rgba(139, 95, 191, 0.1);
+            color: var(--primary);
         }
 
         .progress-card .card-icon {
-            background-color: rgba(162, 215, 216, 0.2);
-            color: #A2D7D8;
+            background-color: rgba(95, 176, 183, 0.1);
+            color: var(--secondary);
         }
 
         .baby-dev-card .card-icon {
-            background-color: rgba(255, 214, 220, 0.3);
-            color: #FFD1DC;
+            background-color: rgba(255, 107, 107, 0.1);
+            color: var(--accent);
         }
 
         .health-tips-card .card-icon {
-            background-color: rgba(255, 154, 162, 0.2);
-            color: #FF9AA2;
+            background-color: rgba(139, 95, 191, 0.1);
+            color: var(--primary);
         }
 
         .card-content h3 {
-            color: #5E5E5E;
+            color: var(--text);
             font-size: 1.2rem;
             margin-bottom: 15px;
             font-weight: 600;
@@ -138,7 +596,7 @@
         .due-date {
             font-size: 1.3rem;
             font-weight: 600;
-            color: #FF9AA2;
+            color: var(--primary);
             margin-bottom: 10px;
         }
 
@@ -151,7 +609,7 @@
         .week-display {
             font-size: 1.1rem;
             font-weight: 600;
-            color: #A2D7D8;
+            color: var(--secondary);
             margin-bottom: 15px;
         }
 
@@ -170,7 +628,7 @@
 
         .progress-fill {
             height: 100%;
-            background: linear-gradient(90deg, #FF9AA2, #FFD1DC);
+            background: linear-gradient(90deg, var(--primary), var(--accent));
             border-radius: 10px;
             transition: width 0.5s ease;
         }
@@ -183,10 +641,10 @@
 
         .trimester-info {
             font-size: 0.9rem;
-            color: #A2D7D8;
+            color: var(--secondary);
             font-weight: 500;
             padding: 5px 10px;
-            background-color: rgba(162, 215, 216, 0.1);
+            background-color: rgba(95, 176, 183, 0.1);
             border-radius: 20px;
             display: inline-block;
         }
@@ -201,7 +659,7 @@
         .size-comparison {
             font-size: 1.1rem;
             font-weight: 600;
-            color: #FF9AA2;
+            color: var(--primary);
             flex: 1;
         }
 
@@ -210,7 +668,7 @@
             height: 80px;
             object-fit: contain;
             border-radius: 50%;
-            background-color: rgba(255, 214, 220, 0.3);
+            background-color: rgba(139, 95, 191, 0.1);
             padding: 10px;
         }
 
@@ -230,7 +688,7 @@
 
         .baby-milestones li:before {
             content: "•";
-            color: #FF9AA2;
+            color: var(--primary);
             font-size: 1.5rem;
             position: absolute;
             left: 5px;
@@ -238,7 +696,7 @@
         }
 
         .health-tip {
-            background-color: rgba(162, 215, 216, 0.1);
+            background-color: rgba(95, 176, 183, 0.1);
             padding: 15px;
             border-radius: 10px;
             margin-bottom: 15px;
@@ -252,10 +710,10 @@
             align-items: center;
             gap: 10px;
             font-size: 0.9rem;
-            color: #FF9AA2;
+            color: var(--primary);
             font-weight: 500;
             padding: 10px;
-            background-color: rgba(255, 154, 162, 0.1);
+            background-color: rgba(139, 95, 191, 0.1);
             border-radius: 10px;
         }
 
@@ -296,7 +754,7 @@
             transform: translate(-50%, -50%);
             font-size: 1.5rem;
             font-weight: 600;
-            color: #FF9AA2;
+            color: var(--primary);
         }
 
         .pregnancy-timeline {
@@ -319,7 +777,7 @@
         .marker-dot {
             width: 20px;
             height: 20px;
-            background-color: #FF9AA2;
+            background-color: var(--primary);
             border-radius: 50%;
             border: 4px solid white;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -364,7 +822,7 @@
         .share-menu p {
             margin-top: 0;
             font-weight: bold;
-            color: #5E5E5E;
+            color: var(--text);
         }
 
         .share-menu a, .share-menu button {
@@ -379,16 +837,16 @@
         }
 
         .share-menu a {
-            background-color: #A2D7D8;
+            background-color: var(--secondary);
             color: white;
         }
 
         .share-menu a:hover {
-            background-color: #8bc5c6;
+            background-color: #4d9ca3;
         }
 
         .share-menu button.copy-link {
-            background-color: #FF9AA2;
+            background-color: var(--primary);
             color: white;
             border: none;
             cursor: pointer;
@@ -396,7 +854,7 @@
 
         .share-menu button.cancel-share {
             background-color: #f0f0f0;
-            color: #5E5E5E;
+            color: var(--text);
             border: none;
             cursor: pointer;
         }
@@ -442,7 +900,7 @@
     <!-- Navigation Bar [Menu] -->
     <nav class="navbar">
         <a href="#" class="logo">
-            <img src="images/logona.svg" alt="Logo"> <label for="" style="color: black;">Ciki da Raino</label>
+            <img src="images/logona.svg" alt="Logo"> <label for="" style="color: var(--text);">Ciki da Raino</label>
         </a>
         <ul class="nav-links">
             <li><a href="index.html">Shafin Gida</a></li>
@@ -657,8 +1115,8 @@
             <div class="visual-progress-container">
                 <div class="circular-progress">
                     <svg class="progress-ring" width="120" height="120">
-                        <circle class="progress-ring-circle" stroke="#A2D7D8" stroke-width="8" fill="transparent" r="52" cx="60" cy="60"/>
-                        <circle class="progress-ring-circle progress-ring-fill" stroke="#FF9AA2" stroke-width="8" stroke-dasharray="326.56" stroke-dashoffset="130.624" fill="transparent" r="52" cx="60" cy="60"/>
+                        <circle class="progress-ring-circle" stroke="#5FB0B7" stroke-width="8" fill="transparent" r="52" cx="60" cy="60"/>
+                        <circle class="progress-ring-circle progress-ring-fill" stroke="#8B5FBF" stroke-width="8" stroke-dasharray="326.56" stroke-dashoffset="130.624" fill="transparent" r="52" cx="60" cy="60"/>
                     </svg>
                     <div class="progress-text" id="circular-progress-text">60%</div>
                 </div>
@@ -671,42 +1129,40 @@
             </div>
         </div>
     </section>
-    
-    <!-- Fetal Development Timeline -->
-    <!-- <h2 class="section-title" id="timeline"><i class="fas fa-baby"></i> Jerin Ci gaban Jariri</h2>
-    <div class="timeline">
-        <div class="week-card" data-aos="fade-up">
-            <div class="week-header" onclick="toggleWeek(this)">
-                <h3>Mako na 4: Irin Poppy</h3>
-                <i class="fas fa-chevron-down"></i>
-            </div>
-            <div class="week-content">
-                <div class="week-details">
-                    <div class="baby-size">
-                        <img src="https://www.babycenter.com/ims/2022/02/4-weeks-pregnant_wide.jpg" alt="Jariri na mako na 4" class="fetus-image">
-                        <p>Girman jariri: kusan inci 0.078 (mm 2) tsayi</p>
-                        <p>Nauyi: ƙasa da oz 0.04 (gram 1)</p>
-                    </div>
-                    <div class="milestones">
-                        <h4>Muhimman Ci gaba:</h4>
-                        <ul>
-                            <li>Blastocyst ya shiga cikin bangon mahaifa</li>
-                            <li>Placenta ya fara samuwa</li>
-                            <li>Amniotic sac yana ci gaba</li>
-                            <li>Tsarin jini na farko ya fara aiki</li>
-                        </ul>
-                    </div>
+
+    <!-- Articles Section -->
+    <section class="articles" id="articles" data-aos="fade-up">
+        <h2 class="section-title"><i style="color: var(--accent)" class="fas fa-newspaper"></i> Sabbin Makaloli</h2>
+        <div class="articles-grid">
+            <div class="article-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="article-img" style="background-image: url('https://images.unsplash.com/photo-1516589091380-5d6019716b4c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                <div class="article-content">
+                    <h3>Preparing for Pregnancy: A Complete Guide</h3>
+                    <p>Everything you need to know before you start trying to conceive.</p>
+                    <a href="#" class="read-more">Read more <i class="fas fa-arrow-right"></i></a>
                 </div>
-                <div class="quick-tip">
-                    <h4><i class="fas fa-lightbulb"></i> Shawara ta Lafiya</h4>
-                    <p>Fara shan kayan abinci masu gina jiki tare da folic acid don hana lahani ga jijiyoyin jiki.</p>
+            </div>
+            
+            <div class="article-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="article-img" style="background-image: url('https://images.unsplash.com/photo-1530046339916-102c1e0adeae?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                <div class="article-content">
+                    <h3>First Trimester Must-Haves</h3>
+                    <p>Essential products and tips to survive the first 12 weeks.</p>
+                    <a href="#" class="read-more">Read more <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="article-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="article-img" style="background-image: url('https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                <div class="article-content">
+                    <h3>Nutrition During Pregnancy</h3>
+                    <p>What to eat (and avoid) for a healthy pregnancy.</p>
+                    <a href="#" class="read-more">Read more <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
-        
-         Other week cards... -
-    </div> -->
-
+    </section>
+    
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
